@@ -1,0 +1,6 @@
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.282:283) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.282:283) : item=0 name=/var/lib/mysql inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.282:283) : cwd=/ 
+type=SYSCALL msg=audit(03/10/22 18:48:20.282:283) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd08101790 a1=0x7ffd08101330 a2=0x3ff a3=0x7ffd081029c0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
