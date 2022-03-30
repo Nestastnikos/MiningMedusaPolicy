@@ -1,8 +1,10 @@
-module Fei.Backend.Tests
+module Fei.Backend.LearningTests
 
 open NUnit.Framework
 open Shouldly
 open System.Text.RegularExpressions
+
+open Utils
 
 [<SetUp>]
 let Setup () =
@@ -45,3 +47,18 @@ let ParseIdentifier () =
 
     let result = Regex.Match (input, pattern)
     result.Value.ShouldBe "283"
+
+[<Test>]
+let StringGetCanonicalPath () =
+    let example1 = "/test"
+    let example2 = "./test"
+    let cwd = "/"
+
+    (PathUtils.getCanonicalPath cwd example1).ShouldBe "/test"
+    (PathUtils.getCanonicalPath cwd example2).ShouldBe "/test"
+
+[<Test>]
+let ListOrdering () =
+    let input = [(1, "Item2") ; (0, "Item1")]
+    let output = input |> List.sortBy (fun (x,y) -> x)
+    (List.head output).ShouldBe ((0, "Item1"))
