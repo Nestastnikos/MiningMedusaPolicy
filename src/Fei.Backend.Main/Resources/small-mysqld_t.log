@@ -1,0 +1,849 @@
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.282:283) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.282:283) : item=0 name=/var/lib/mysql inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.282:283) : cwd=/ 
+type=SYSCALL msg=audit(03/10/22 18:48:20.282:283) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd08101790 a1=0x7ffd08101330 a2=0x3ff a3=0x7ffd081029c0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.382:284) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.382:284) : item=0 name=/var/lib/mysql/ inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=PARENT cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.382:284) : cwd=/ 
+type=SYSCALL msg=audit(03/10/22 18:48:20.382:284) : arch=x86_64 syscall=unlink success=no exit=ENOENT(No such file or directory) a0=0x7ffd081027b0 a1=0x0 a2=0xe a3=0xf items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.382:285) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.382:285) : item=1 name=/var/lib/mysql/experiment-server.lower-test inode=17107394 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=CREATE cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=PATH msg=audit(03/10/22 18:48:20.382:285) : item=0 name=/var/lib/mysql/ inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=PARENT cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.382:285) : cwd=/ 
+type=SYSCALL msg=audit(03/10/22 18:48:20.382:285) : arch=x86_64 syscall=openat success=yes exit=3 a0=AT_FDCWD a1=0x7ffd081029b0 a2=O_RDWR|O_CREAT|O_CLOEXEC a3=0x1b6 items=2 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.382:286) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.382:286) : item=1 name=/var/lib/mysql/experiment-server.lower-test inode=17107394 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=DELETE cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=PATH msg=audit(03/10/22 18:48:20.382:286) : item=0 name=/var/lib/mysql/ inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=PARENT cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.382:286) : cwd=/ 
+type=SYSCALL msg=audit(03/10/22 18:48:20.382:286) : arch=x86_64 syscall=unlink success=yes exit=0 a0=0x7ffd081029b0 a1=0x0 a2=0xe a3=0x0 items=2 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.413:287) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.413:287) : item=1 name=/var/log/mariadb/mariadb.log inode=25751153 dev=fd:00 mode=file,600 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_log_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=PATH msg=audit(03/10/22 18:48:20.413:287) : item=0 name=/var/log/mariadb/ inode=25525473 dev=fd:00 mode=dir,750 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_log_t:s0 nametype=PARENT cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.413:287) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.413:287) : arch=x86_64 syscall=openat success=yes exit=3 a0=AT_FDCWD a1=0x5639bdf2fba0 a2=O_WRONLY|O_CREAT|O_APPEND a3=0x1b6 items=2 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.413:288) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.413:288) : item=1 name=/var/log/mariadb/mariadb.log inode=25751153 dev=fd:00 mode=file,600 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_log_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=PATH msg=audit(03/10/22 18:48:20.413:288) : item=0 name=/var/log/mariadb/ inode=25525473 dev=fd:00 mode=dir,750 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_log_t:s0 nametype=PARENT cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.413:288) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.413:288) : arch=x86_64 syscall=openat success=yes exit=3 a0=AT_FDCWD a1=0x5639bdf2fba0 a2=O_WRONLY|O_CREAT|O_APPEND a3=0x1b6 items=2 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.528:289) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.528:289) : item=0 name=./mysql/plugin.frm inode=17107448 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.528:289) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.528:289) : arch=x86_64 syscall=openat success=yes exit=3 a0=AT_FDCWD a1=0x7ffd08101610 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.552:290) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.552:290) : item=0 name=/var/lib/mysql/aria_log_control inode=17107428 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.552:290) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.552:290) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd081004d0 a1=0x7ffd08100a90 a2=0x1ff a3=0xf items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.552:291) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.552:291) : item=0 name=/var/lib/mysql/aria_log_control inode=17107428 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.552:291) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.552:291) : arch=x86_64 syscall=openat success=yes exit=3 a0=AT_FDCWD a1=0x7ffd08100a90 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.571:292) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.571:292) : item=0 name=/var/lib/mysql/ inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.571:292) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.571:292) : arch=x86_64 syscall=openat success=yes exit=4 a0=AT_FDCWD a1=0x5639bdf865e8 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.585:293) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.585:293) : item=0 name=/var/lib/mysql/aria_log.00000001 inode=17107429 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.585:293) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.585:293) : arch=x86_64 syscall=openat success=yes exit=5 a0=AT_FDCWD a1=0x7ffd080fe740 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.585:294) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.585:294) : item=0 name=/var/lib/mysql/aria_log.00000001 inode=17107429 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.585:294) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.585:294) : arch=x86_64 syscall=openat success=yes exit=5 a0=AT_FDCWD a1=0x7ffd080fe740 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.724:295) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.724:295) : item=0 name=./ibdata1 inode=17107430 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.724:295) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.724:295) : arch=x86_64 syscall=openat success=yes exit=9 a0=AT_FDCWD a1=0x5639beadb0d8 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.754:296) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.754:296) : item=0 name=./ib_logfile0 inode=17107431 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.754:296) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.754:296) : arch=x86_64 syscall=openat success=yes exit=9 a0=AT_FDCWD a1=0x5639bf0af660 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.754:297) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.754:297) : item=0 name=./ibdata1 inode=17107430 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.754:297) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.754:297) : arch=x86_64 syscall=openat success=yes exit=10 a0=AT_FDCWD a1=0x5639bec17a48 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.768:298) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.768:298) : item=0 name=./ib_logfile0 inode=17107431 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.768:298) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.768:298) : arch=x86_64 syscall=openat success=yes exit=11 a0=AT_FDCWD a1=0x5639bf0af918 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.873:299) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.873:299) : item=0 name=./mysql/gtid_slave_pos.ibd inode=17071652 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.873:299) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.873:299) : arch=x86_64 syscall=openat success=yes exit=12 a0=AT_FDCWD a1=0x5639bf1b72e8 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.885:300) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.885:300) : item=0 name=./mysql/innodb_index_stats.ibd inode=17071636 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.885:300) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.885:300) : arch=x86_64 syscall=openat success=yes exit=12 a0=AT_FDCWD a1=0x5639bf1b72a8 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.886:301) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.886:301) : item=0 name=./mysql/innodb_table_stats.ibd inode=17071634 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.886:301) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.886:301) : arch=x86_64 syscall=openat success=yes exit=12 a0=AT_FDCWD a1=0x5639bf1b7168 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.888:302) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.888:302) : item=0 name=./mysql/transaction_registry.ibd inode=17071638 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.888:302) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.888:302) : arch=x86_64 syscall=openat success=yes exit=12 a0=AT_FDCWD a1=0x5639bf1a1d38 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.903:303) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.903:303) : item=0 name=./ inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=PARENT cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.903:303) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.903:303) : arch=x86_64 syscall=unlink success=no exit=ENOENT(No such file or directory) a0=0x5639beadb288 a1=0x0 a2=0x1 a3=0xfffffffffffff029 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.903:304) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.903:304) : item=1 name=./ibtmp1 inode=17107394 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=CREATE cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=PATH msg=audit(03/10/22 18:48:20.903:304) : item=0 name=./ inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=PARENT cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.903:304) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.903:304) : arch=x86_64 syscall=openat success=yes exit=12 a0=AT_FDCWD a1=0x5639beadb288 a2=O_RDWR|O_CREAT|O_EXCL|O_CLOEXEC a3=0x1b0 items=2 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.904:305) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.904:305) : item=0 name=./ibtmp1 inode=17107394 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.904:305) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.904:305) : arch=x86_64 syscall=openat success=yes exit=12 a0=AT_FDCWD a1=0x5639bf1a23f8 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.945:306) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.945:306) : item=0 name=./mysql/innodb_index_stats.ibd inode=17071636 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.945:306) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.945:306) : arch=x86_64 syscall=openat success=yes exit=13 a0=AT_FDCWD a1=0x5639bf1b8648 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.978:307) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.978:307) : item=0 name=/var/lib/mysql/ib_buffer_pool inode=17116668 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.978:307) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.978:307) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7f313effa3b0 a1=0x7f313eff9f50 a2=0x3ff a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.978:308) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.978:308) : item=0 name=/var/lib/mysql/ib_buffer_pool inode=17116668 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.978:308) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.978:308) : arch=x86_64 syscall=openat success=yes exit=14 a0=AT_FDCWD a1=0x7f313effbd40 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:20.990:309) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:20.990:309) : item=0 name=./mysql/innodb_table_stats.ibd inode=17071634 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:20.990:309) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:20.990:309) : arch=x86_64 syscall=openat success=yes exit=14 a0=AT_FDCWD a1=0x5639bf1b8a08 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.002:310) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.002:310) : item=0 name=./mysql/transaction_registry.ibd inode=17071638 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.002:310) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.002:310) : arch=x86_64 syscall=openat success=yes exit=15 a0=AT_FDCWD a1=0x5639bf1b8dd8 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.006:311) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.006:311) : item=0 name=./mysql/gtid_slave_pos.ibd inode=17071652 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.006:311) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.006:311) : arch=x86_64 syscall=openat success=yes exit=16 a0=AT_FDCWD a1=0x5639bf1b8288 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.049:312) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.049:312) : item=0 name=./mysql/plugin.frm inode=17107448 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.049:312) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.049:312) : arch=x86_64 syscall=openat success=yes exit=17 a0=AT_FDCWD a1=0x7ffd08100430 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.096:313) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.096:313) : item=0 name=/var/lib/mysql/mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.096:313) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.096:313) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fc8c0 a1=0x7ffd080fc460 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.096:314) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.096:314) : item=0 name=/var/lib/mysql/mysql/plugin.MAI inode=17107449 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.096:314) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.096:314) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fc8c0 a1=0x7ffd080fc460 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.097:315) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.097:315) : item=0 name=mysql inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.097:315) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.097:315) : arch=x86_64 syscall=openat success=yes exit=17 a0=0x12 a1=0x7ffd080fd9f9 a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.098:316) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.098:316) : item=0 name=mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.098:316) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.098:316) : arch=x86_64 syscall=openat success=yes exit=18 a0=0x11 a1=0x7ffd080fd9ff a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.099:317) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.099:317) : item=0 name=plugin.MAI inode=17107449 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.099:317) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.099:317) : arch=x86_64 syscall=openat success=yes exit=17 a0=0x12 a1=0x7ffd080fe4b5 a2=O_RDWR|O_NOFOLLOW|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.116:318) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.116:318) : item=0 name=./mysql/plugin.MAI inode=17107449 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.116:318) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.116:318) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fe2a0 a1=0x7ffd080fe0a0 a2=0x1ff a3=0x4 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.116:319) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.116:319) : item=0 name=./mysql/plugin.MAD inode=17107450 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.116:319) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.116:319) : arch=x86_64 syscall=openat success=yes exit=18 a0=AT_FDCWD a1=0x5639bf212140 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.191:320) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.191:320) : item=0 name=./mysql/servers.frm inode=17107451 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.191:320) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.191:320) : arch=x86_64 syscall=openat success=yes exit=17 a0=AT_FDCWD a1=0x7ffd081008c0 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.200:321) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.200:321) : item=0 name=/var/lib/mysql/mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.200:321) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.200:321) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fcd50 a1=0x7ffd080fc8f0 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.201:322) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.201:322) : item=0 name=/var/lib/mysql/mysql/servers.MAI inode=17107452 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.201:322) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.201:322) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fcd50 a1=0x7ffd080fc8f0 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.203:323) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.203:323) : item=0 name=mysql inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.203:323) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.203:323) : arch=x86_64 syscall=openat success=yes exit=17 a0=0x12 a1=0x7ffd080fde89 a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.204:324) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.204:324) : item=0 name=mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.204:324) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.204:324) : arch=x86_64 syscall=openat success=yes exit=18 a0=0x11 a1=0x7ffd080fde8f a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.205:325) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.205:325) : item=0 name=servers.MAI inode=17107452 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.205:325) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.205:325) : arch=x86_64 syscall=openat success=yes exit=17 a0=0x12 a1=0x7ffd080fe945 a2=O_RDWR|O_NOFOLLOW|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.206:326) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.206:326) : item=0 name=./mysql/servers.MAI inode=17107452 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.206:326) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.206:326) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fe730 a1=0x7ffd080fe530 a2=0x1ff a3=0x4 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.206:327) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.206:327) : item=0 name=./mysql/servers.MAD inode=17107453 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.206:327) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.206:327) : arch=x86_64 syscall=openat success=yes exit=18 a0=AT_FDCWD a1=0x5639bebb55f0 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.210:328) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.210:328) : item=0 name=/var/lib/mysql/ inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=PARENT cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.210:328) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.210:328) : arch=x86_64 syscall=unlink success=no exit=ENOENT(No such file or directory) a0=0x5639bead4339 a1=0x9 a2=0x7ffd081030a9 a3=0x7ffd08102e94 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.210:329) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.210:329) : item=1 name=/var/lib/mysql/mysql.sock inode=17116667 dev=fd:00 mode=socket,777 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_var_run_t:s0 nametype=CREATE cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=PATH msg=audit(03/10/22 18:48:21.210:329) : item=0 name=/var/lib/mysql/ inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=PARENT cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.210:329) : cwd=/var/lib/mysql 
+type=SOCKADDR msg=audit(03/10/22 18:48:21.210:329) : saddr={ saddr_fam=local path=/var/lib/mysql/mysql.sock } 
+type=SYSCALL msg=audit(03/10/22 18:48:21.210:329) : arch=x86_64 syscall=bind success=yes exit=0 a0=0x14 a1=0x7ffd08103090 a2=0x6e a3=0x0 items=2 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.210:330) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.210:330) : item=0 name=./mysql/db.frm inode=17107435 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.210:330) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.210:330) : arch=x86_64 syscall=openat success=yes exit=21 a0=AT_FDCWD a1=0x7ffd080fe610 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.213:331) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.213:331) : item=0 name=/var/lib/mysql/mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.213:331) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.213:331) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080faaa0 a1=0x7ffd080fa640 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.213:332) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.213:332) : item=0 name=/var/lib/mysql/mysql/db.MAI inode=17107436 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.213:332) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.213:332) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080faaa0 a1=0x7ffd080fa640 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.214:333) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.214:333) : item=0 name=mysql inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.214:333) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.214:333) : arch=x86_64 syscall=openat success=yes exit=21 a0=0x16 a1=0x7ffd080fbbd9 a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.214:334) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.214:334) : item=0 name=mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.214:334) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.214:334) : arch=x86_64 syscall=openat success=yes exit=22 a0=0x15 a1=0x7ffd080fbbdf a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.214:335) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.214:335) : item=0 name=db.MAI inode=17107436 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.214:335) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.214:335) : arch=x86_64 syscall=openat success=yes exit=21 a0=0x16 a1=0x7ffd080fc695 a2=O_RDWR|O_NOFOLLOW|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.240:336) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.240:336) : item=0 name=./mysql/db.MAI inode=17107436 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.240:336) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.240:336) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fc480 a1=0x7ffd080fc280 a2=0x1ff a3=0x4 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.240:337) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.240:337) : item=0 name=./mysql/db.MAD inode=17107437 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.240:337) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.240:337) : arch=x86_64 syscall=openat success=yes exit=22 a0=AT_FDCWD a1=0x5639bf226508 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.240:338) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.240:338) : item=0 name=./mysql/proxies_priv.frm inode=17071639 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.240:338) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.240:338) : arch=x86_64 syscall=openat success=yes exit=23 a0=AT_FDCWD a1=0x7ffd080fe230 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.254:339) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.254:339) : item=0 name=./mysql/proxies_priv.frm inode=17071639 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.254:339) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.254:339) : arch=x86_64 syscall=openat success=yes exit=23 a0=AT_FDCWD a1=0x7ffd080fe610 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.281:340) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.281:340) : item=0 name=/var/lib/mysql/mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.281:340) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.281:340) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080faaa0 a1=0x7ffd080fa640 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.281:341) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.281:341) : item=0 name=/var/lib/mysql/mysql/proxies_priv.MAI inode=17071640 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.281:341) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.281:341) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080faaa0 a1=0x7ffd080fa640 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.281:342) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.281:342) : item=0 name=mysql inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.281:342) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.281:342) : arch=x86_64 syscall=openat success=yes exit=23 a0=0x18 a1=0x7ffd080fbbd9 a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.281:343) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.281:343) : item=0 name=mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.281:343) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.281:343) : arch=x86_64 syscall=openat success=yes exit=24 a0=0x17 a1=0x7ffd080fbbdf a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.281:344) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.281:344) : item=0 name=proxies_priv.MAI inode=17071640 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.281:344) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.281:344) : arch=x86_64 syscall=openat success=yes exit=23 a0=0x18 a1=0x7ffd080fc695 a2=O_RDWR|O_NOFOLLOW|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.282:345) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.282:345) : item=0 name=./mysql/proxies_priv.MAI inode=17071640 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.282:345) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.282:345) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fc480 a1=0x7ffd080fc280 a2=0x1ff a3=0x4 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.283:346) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.283:346) : item=0 name=./mysql/proxies_priv.MAD inode=17071641 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.283:346) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.283:346) : arch=x86_64 syscall=openat success=yes exit=24 a0=AT_FDCWD a1=0x5639bf234dd0 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.283:347) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.283:347) : item=0 name=./mysql/roles_mapping.frm inode=17107442 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.283:347) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.283:347) : arch=x86_64 syscall=openat success=yes exit=25 a0=AT_FDCWD a1=0x7ffd080fe230 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.284:348) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.284:348) : item=0 name=./mysql/roles_mapping.frm inode=17107442 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.284:348) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.284:348) : arch=x86_64 syscall=openat success=yes exit=25 a0=AT_FDCWD a1=0x7ffd080fe610 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.284:349) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.284:349) : item=0 name=/var/lib/mysql/mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.284:349) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.284:349) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080faaa0 a1=0x7ffd080fa640 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.284:350) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.284:350) : item=0 name=/var/lib/mysql/mysql/roles_mapping.MAI inode=17107443 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.284:350) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.284:350) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080faaa0 a1=0x7ffd080fa640 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.284:351) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.284:351) : item=0 name=mysql inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.284:351) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.284:351) : arch=x86_64 syscall=openat success=yes exit=25 a0=0x1a a1=0x7ffd080fbbd9 a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.284:352) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.284:352) : item=0 name=mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.284:352) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.284:352) : arch=x86_64 syscall=openat success=yes exit=26 a0=0x19 a1=0x7ffd080fbbdf a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.284:353) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.284:353) : item=0 name=roles_mapping.MAI inode=17107443 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.284:353) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.284:353) : arch=x86_64 syscall=openat success=yes exit=25 a0=0x1a a1=0x7ffd080fc695 a2=O_RDWR|O_NOFOLLOW|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.285:354) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.285:354) : item=0 name=./mysql/roles_mapping.MAI inode=17107443 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.285:354) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.285:354) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fc480 a1=0x7ffd080fc280 a2=0x1ff a3=0x4 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.286:355) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.286:355) : item=0 name=./mysql/roles_mapping.MAD inode=17107444 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.286:355) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.286:355) : arch=x86_64 syscall=openat success=yes exit=26 a0=AT_FDCWD a1=0x5639bf241fd0 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.286:356) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.286:356) : item=0 name=./mysql/global_priv.frm inode=17107438 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.286:356) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.286:356) : arch=x86_64 syscall=openat success=yes exit=27 a0=AT_FDCWD a1=0x7ffd080fe230 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.287:357) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.287:357) : item=0 name=./mysql/global_priv.frm inode=17107438 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.287:357) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.287:357) : arch=x86_64 syscall=openat success=yes exit=27 a0=AT_FDCWD a1=0x7ffd080fe610 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.304:358) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.304:358) : item=0 name=/var/lib/mysql/mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.304:358) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.304:358) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080faaa0 a1=0x7ffd080fa640 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.304:359) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.304:359) : item=0 name=/var/lib/mysql/mysql/global_priv.MAI inode=17107439 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.304:359) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.304:359) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080faaa0 a1=0x7ffd080fa640 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.304:360) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.304:360) : item=0 name=mysql inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.304:360) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.304:360) : arch=x86_64 syscall=openat success=yes exit=27 a0=0x1c a1=0x7ffd080fbbd9 a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.304:361) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.304:361) : item=0 name=mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.304:361) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.304:361) : arch=x86_64 syscall=openat success=yes exit=28 a0=0x1b a1=0x7ffd080fbbdf a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.304:362) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.304:362) : item=0 name=global_priv.MAI inode=17107439 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.304:362) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.304:362) : arch=x86_64 syscall=openat success=yes exit=27 a0=0x1c a1=0x7ffd080fc695 a2=O_RDWR|O_NOFOLLOW|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.304:363) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.304:363) : item=0 name=./mysql/global_priv.MAI inode=17107439 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.304:363) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.304:363) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fc480 a1=0x7ffd080fc280 a2=0x1ff a3=0x4 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.305:364) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.305:364) : item=0 name=./mysql/global_priv.MAD inode=17107440 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.305:364) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.305:364) : arch=x86_64 syscall=openat success=yes exit=28 a0=AT_FDCWD a1=0x5639bf250168 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.324:365) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.324:365) : item=0 name=./mysql/time_zone_leap_second.frm inode=17071680 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.324:365) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.324:365) : arch=x86_64 syscall=openat success=yes exit=29 a0=AT_FDCWD a1=0x7ffd08100050 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.341:366) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.341:366) : item=0 name=/var/lib/mysql/mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.341:366) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.341:366) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fc4e0 a1=0x7ffd080fc080 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.341:367) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.341:367) : item=0 name=/var/lib/mysql/mysql/time_zone_leap_second.MAI inode=17071681 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.341:367) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.341:367) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fc4e0 a1=0x7ffd080fc080 a2=0x3ff a3=0x6e6f7a5f656d6974 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.341:368) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.341:368) : item=0 name=mysql inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.341:368) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.341:368) : arch=x86_64 syscall=openat success=yes exit=29 a0=0x1e a1=0x7ffd080fd619 a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.341:369) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.341:369) : item=0 name=mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.341:369) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.341:369) : arch=x86_64 syscall=openat success=yes exit=30 a0=0x1d a1=0x7ffd080fd61f a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.341:370) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.341:370) : item=0 name=time_zone_leap_second.MAI inode=17071681 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.341:370) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.341:370) : arch=x86_64 syscall=openat success=yes exit=29 a0=0x1e a1=0x7ffd080fe0d5 a2=O_RDWR|O_NOFOLLOW|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.343:371) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.343:371) : item=0 name=./mysql/time_zone_leap_second.MAI inode=17071681 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.343:371) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.343:371) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fdec0 a1=0x7ffd080fdcc0 a2=0x1ff a3=0x4 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.343:372) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.343:372) : item=0 name=./mysql/time_zone_leap_second.MAD inode=17071682 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.343:372) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.343:372) : arch=x86_64 syscall=openat success=yes exit=30 a0=AT_FDCWD a1=0x5639bf25d770 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.343:373) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.343:373) : item=0 name=./mysql/time_zone_name.frm inode=17107380 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.343:373) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.343:373) : arch=x86_64 syscall=openat success=yes exit=31 a0=AT_FDCWD a1=0x7ffd08100050 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.364:374) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.364:374) : item=0 name=/var/lib/mysql/mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.364:374) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.364:374) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fc4e0 a1=0x7ffd080fc080 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.364:375) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.364:375) : item=0 name=/var/lib/mysql/mysql/time_zone_name.MAI inode=17107381 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.364:375) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.364:375) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fc4e0 a1=0x7ffd080fc080 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.364:376) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.364:376) : item=0 name=mysql inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.364:376) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.364:376) : arch=x86_64 syscall=openat success=yes exit=31 a0=0x20 a1=0x7ffd080fd619 a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.364:377) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.364:377) : item=0 name=mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.364:377) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.364:377) : arch=x86_64 syscall=openat success=yes exit=32 a0=0x1f a1=0x7ffd080fd61f a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.364:378) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.364:378) : item=0 name=time_zone_name.MAI inode=17107381 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.364:378) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.364:378) : arch=x86_64 syscall=openat success=yes exit=31 a0=0x20 a1=0x7ffd080fe0d5 a2=O_RDWR|O_NOFOLLOW|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.373:379) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.373:379) : item=0 name=./mysql/time_zone_name.MAI inode=17107381 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.373:379) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.373:379) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fdec0 a1=0x7ffd080fdcc0 a2=0x1ff a3=0x4 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.373:380) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.373:380) : item=0 name=./mysql/time_zone_name.MAD inode=17107382 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.373:380) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.373:380) : arch=x86_64 syscall=openat success=yes exit=32 a0=AT_FDCWD a1=0x5639bf270cf0 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.374:381) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.374:381) : item=0 name=./mysql/time_zone.frm inode=17107383 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.374:381) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.374:381) : arch=x86_64 syscall=openat success=yes exit=33 a0=AT_FDCWD a1=0x7ffd08100050 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.378:382) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.378:382) : item=0 name=/var/lib/mysql/mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.378:382) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.378:382) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fc4e0 a1=0x7ffd080fc080 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.378:383) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.378:383) : item=0 name=/var/lib/mysql/mysql/time_zone.MAI inode=17107384 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.378:383) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.378:383) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fc4e0 a1=0x7ffd080fc080 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.378:384) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.378:384) : item=0 name=mysql inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.378:384) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.378:384) : arch=x86_64 syscall=openat success=yes exit=33 a0=0x22 a1=0x7ffd080fd619 a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.378:385) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.378:385) : item=0 name=mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.378:385) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.378:385) : arch=x86_64 syscall=openat success=yes exit=34 a0=0x21 a1=0x7ffd080fd61f a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.378:386) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.378:386) : item=0 name=time_zone.MAI inode=17107384 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.378:386) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.378:386) : arch=x86_64 syscall=openat success=yes exit=33 a0=0x22 a1=0x7ffd080fe0d5 a2=O_RDWR|O_NOFOLLOW|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.379:387) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.379:387) : item=0 name=./mysql/time_zone.MAI inode=17107384 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.379:387) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.379:387) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fdec0 a1=0x7ffd080fdcc0 a2=0x1ff a3=0x4 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.379:388) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.379:388) : item=0 name=./mysql/time_zone.MAD inode=17107385 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.379:388) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.379:388) : arch=x86_64 syscall=openat success=yes exit=34 a0=AT_FDCWD a1=0x5639bf27b808 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.379:389) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.379:389) : item=0 name=./mysql/time_zone_transition_type.frm inode=17107389 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.379:389) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.379:389) : arch=x86_64 syscall=openat success=yes exit=35 a0=AT_FDCWD a1=0x7ffd08100050 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.397:390) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.397:390) : item=0 name=/var/lib/mysql/mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.397:390) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.397:390) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fc4e0 a1=0x7ffd080fc080 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.397:391) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.397:391) : item=0 name=/var/lib/mysql/mysql/time_zone_transition_type.MAI inode=17107390 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.397:391) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.397:391) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fc4e0 a1=0x7ffd080fc080 a2=0x3ff a3=0x6e6f7a5f656d6974 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.397:392) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.397:392) : item=0 name=mysql inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.397:392) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.397:392) : arch=x86_64 syscall=openat success=yes exit=35 a0=0x24 a1=0x7ffd080fd619 a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.397:393) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.397:393) : item=0 name=mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.397:393) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.397:393) : arch=x86_64 syscall=openat success=yes exit=36 a0=0x23 a1=0x7ffd080fd61f a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.397:394) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.397:394) : item=0 name=time_zone_transition_type.MAI inode=17107390 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.397:394) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.397:394) : arch=x86_64 syscall=openat success=yes exit=35 a0=0x24 a1=0x7ffd080fe0d5 a2=O_RDWR|O_NOFOLLOW|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.406:395) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.406:395) : item=0 name=./mysql/time_zone_transition_type.MAI inode=17107390 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.406:395) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.406:395) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fdec0 a1=0x7ffd080fdcc0 a2=0x1ff a3=0x4 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.406:396) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.406:396) : item=0 name=./mysql/time_zone_transition_type.MAD inode=17107391 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.406:396) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.406:396) : arch=x86_64 syscall=openat success=yes exit=36 a0=AT_FDCWD a1=0x5639bf286868 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.406:397) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.406:397) : item=0 name=./mysql/time_zone_transition.frm inode=17107386 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.406:397) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.406:397) : arch=x86_64 syscall=openat success=yes exit=37 a0=AT_FDCWD a1=0x7ffd08100050 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.407:398) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.407:398) : item=0 name=/var/lib/mysql/mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.407:398) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.407:398) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fc4e0 a1=0x7ffd080fc080 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.407:399) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.407:399) : item=0 name=/var/lib/mysql/mysql/time_zone_transition.MAI inode=17107387 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.407:399) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.407:399) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fc4e0 a1=0x7ffd080fc080 a2=0x3ff a3=0x6e6f7a5f656d6974 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.407:400) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.407:400) : item=0 name=mysql inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.407:400) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.407:400) : arch=x86_64 syscall=openat success=yes exit=37 a0=0x26 a1=0x7ffd080fd619 a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.407:401) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.407:401) : item=0 name=mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.407:401) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.407:401) : arch=x86_64 syscall=openat success=yes exit=38 a0=0x25 a1=0x7ffd080fd61f a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.407:402) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.407:402) : item=0 name=time_zone_transition.MAI inode=17107387 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.407:402) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.407:402) : arch=x86_64 syscall=openat success=yes exit=37 a0=0x26 a1=0x7ffd080fe0d5 a2=O_RDWR|O_NOFOLLOW|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.408:403) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.408:403) : item=0 name=./mysql/time_zone_transition.MAI inode=17107387 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.408:403) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.408:403) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fdec0 a1=0x7ffd080fdcc0 a2=0x1ff a3=0x4 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.408:404) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.408:404) : item=0 name=./mysql/time_zone_transition.MAD inode=17107388 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.408:404) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.408:404) : arch=x86_64 syscall=openat success=yes exit=38 a0=AT_FDCWD a1=0x5639bf2917b8 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.433:405) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.433:405) : item=0 name=./mysql/tables_priv.frm inode=17107454 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.433:405) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.433:405) : arch=x86_64 syscall=openat success=yes exit=29 a0=AT_FDCWD a1=0x7ffd080fe7c0 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.447:406) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.447:406) : item=0 name=/var/lib/mysql/mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.447:406) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.447:406) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fac50 a1=0x7ffd080fa7f0 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.447:407) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.447:407) : item=0 name=/var/lib/mysql/mysql/tables_priv.MAI inode=17107455 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.447:407) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.447:407) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fac50 a1=0x7ffd080fa7f0 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.447:408) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.447:408) : item=0 name=mysql inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.447:408) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.447:408) : arch=x86_64 syscall=openat success=yes exit=29 a0=0x1e a1=0x7ffd080fbd89 a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.447:409) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.447:409) : item=0 name=mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.447:409) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.447:409) : arch=x86_64 syscall=openat success=yes exit=30 a0=0x1d a1=0x7ffd080fbd8f a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.447:410) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.447:410) : item=0 name=tables_priv.MAI inode=17107455 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.447:410) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.447:410) : arch=x86_64 syscall=openat success=yes exit=29 a0=0x1e a1=0x7ffd080fc845 a2=O_RDWR|O_NOFOLLOW|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.456:411) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.456:411) : item=0 name=./mysql/tables_priv.MAI inode=17107455 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.456:411) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.456:411) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fc630 a1=0x7ffd080fc430 a2=0x1ff a3=0x4 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.456:412) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.456:412) : item=0 name=./mysql/tables_priv.MAD inode=17107362 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.456:412) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.456:412) : arch=x86_64 syscall=openat success=yes exit=30 a0=AT_FDCWD a1=0x5639bf286a60 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.456:413) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.456:413) : item=0 name=./mysql/columns_priv.frm inode=17107365 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.456:413) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.456:413) : arch=x86_64 syscall=openat success=yes exit=31 a0=AT_FDCWD a1=0x7ffd080fe7c0 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.456:414) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.456:414) : item=0 name=/var/lib/mysql/mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.456:414) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.456:414) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fac50 a1=0x7ffd080fa7f0 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.456:415) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.456:415) : item=0 name=/var/lib/mysql/mysql/columns_priv.MAI inode=17107366 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.456:415) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.456:415) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fac50 a1=0x7ffd080fa7f0 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.457:416) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.457:416) : item=0 name=mysql inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.457:416) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.457:416) : arch=x86_64 syscall=openat success=yes exit=31 a0=0x20 a1=0x7ffd080fbd89 a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.457:417) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.457:417) : item=0 name=mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.457:417) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.457:417) : arch=x86_64 syscall=openat success=yes exit=32 a0=0x1f a1=0x7ffd080fbd8f a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.457:418) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.457:418) : item=0 name=columns_priv.MAI inode=17107366 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.457:418) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.457:418) : arch=x86_64 syscall=openat success=yes exit=31 a0=0x20 a1=0x7ffd080fc845 a2=O_RDWR|O_NOFOLLOW|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.457:419) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.457:419) : item=0 name=./mysql/columns_priv.MAI inode=17107366 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.457:419) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.457:419) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fc630 a1=0x7ffd080fc430 a2=0x1ff a3=0x4 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.457:420) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.457:420) : item=0 name=./mysql/columns_priv.MAD inode=17107367 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.457:420) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.457:420) : arch=x86_64 syscall=openat success=yes exit=32 a0=AT_FDCWD a1=0x5639bf2772a0 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.457:421) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.457:421) : item=0 name=./mysql/procs_priv.frm inode=17071686 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.457:421) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.457:421) : arch=x86_64 syscall=openat success=yes exit=33 a0=AT_FDCWD a1=0x7ffd080fe3e0 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.457:422) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.457:422) : item=0 name=./mysql/procs_priv.frm inode=17071686 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.457:422) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.457:422) : arch=x86_64 syscall=openat success=yes exit=33 a0=AT_FDCWD a1=0x7ffd080fe7c0 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.458:423) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.458:423) : item=0 name=/var/lib/mysql/mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.458:423) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.458:423) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fac50 a1=0x7ffd080fa7f0 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.458:424) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.458:424) : item=0 name=/var/lib/mysql/mysql/procs_priv.MAI inode=17071687 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.458:424) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.458:424) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fac50 a1=0x7ffd080fa7f0 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.458:425) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.458:425) : item=0 name=mysql inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.458:425) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.458:425) : arch=x86_64 syscall=openat success=yes exit=33 a0=0x22 a1=0x7ffd080fbd89 a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.458:426) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.458:426) : item=0 name=mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.458:426) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.458:426) : arch=x86_64 syscall=openat success=yes exit=34 a0=0x21 a1=0x7ffd080fbd8f a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.458:427) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.458:427) : item=0 name=procs_priv.MAI inode=17071687 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.458:427) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.458:427) : arch=x86_64 syscall=openat success=yes exit=33 a0=0x22 a1=0x7ffd080fc845 a2=O_RDWR|O_NOFOLLOW|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.458:428) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.458:428) : item=0 name=./mysql/procs_priv.MAI inode=17071687 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.458:428) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.458:428) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fc630 a1=0x7ffd080fc430 a2=0x1ff a3=0x4 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.458:429) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.458:429) : item=0 name=./mysql/procs_priv.MAD inode=17071688 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.458:429) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.458:429) : arch=x86_64 syscall=openat success=yes exit=34 a0=AT_FDCWD a1=0x5639bf26b0a0 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.459:430) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.459:430) : item=0 name=./mysql/func.frm inode=17107445 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.459:430) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.459:430) : arch=x86_64 syscall=openat success=yes exit=35 a0=AT_FDCWD a1=0x7ffd08101910 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.460:431) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.460:431) : item=0 name=/var/lib/mysql/mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.460:431) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.460:431) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fdda0 a1=0x7ffd080fd940 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.460:432) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.460:432) : item=0 name=/var/lib/mysql/mysql/func.MAI inode=17107446 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.460:432) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.460:432) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fdda0 a1=0x7ffd080fd940 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.460:433) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.460:433) : item=0 name=mysql inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.460:433) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.460:433) : arch=x86_64 syscall=openat success=yes exit=35 a0=0x24 a1=0x7ffd080feed9 a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.460:434) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.460:434) : item=0 name=mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.460:434) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.460:434) : arch=x86_64 syscall=openat success=yes exit=36 a0=0x23 a1=0x7ffd080feedf a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.460:435) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.460:435) : item=0 name=func.MAI inode=17107446 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.460:435) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.460:435) : arch=x86_64 syscall=openat success=yes exit=35 a0=0x24 a1=0x7ffd080ff995 a2=O_RDWR|O_NOFOLLOW|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.460:436) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.460:436) : item=0 name=./mysql/func.MAI inode=17107446 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.460:436) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.460:436) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080ff780 a1=0x7ffd080ff580 a2=0x1ff a3=0x4 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.461:437) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.461:437) : item=0 name=./mysql/func.MAD inode=17107447 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.461:437) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.461:437) : arch=x86_64 syscall=openat success=yes exit=36 a0=AT_FDCWD a1=0x5639bf29fb40 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.462:438) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.462:438) : item=0 name=./ inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=PARENT cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.462:438) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.462:438) : arch=x86_64 syscall=unlink success=no exit=ENOENT(No such file or directory) a0=0x7ffd08102da0 a1=0x0 a2=0xe a3=0x7ffd08102c20 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.462:439) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.462:439) : item=0 name=./mysql/event.frm inode=17071630 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.462:439) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.462:439) : arch=x86_64 syscall=openat success=yes exit=35 a0=AT_FDCWD a1=0x7ffd08101b90 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.463:440) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.463:440) : item=0 name=/var/lib/mysql/mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.463:440) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.463:440) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fe020 a1=0x7ffd080fdbc0 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.463:441) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.463:441) : item=0 name=/var/lib/mysql/mysql/event.MAI inode=17071631 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.463:441) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.463:441) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080fe020 a1=0x7ffd080fdbc0 a2=0x3ff a3=0x8 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.463:442) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.463:442) : item=0 name=mysql inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.463:442) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.463:442) : arch=x86_64 syscall=openat success=yes exit=35 a0=0x24 a1=0x7ffd080ff159 a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.463:443) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.463:443) : item=0 name=mysql inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.463:443) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.463:443) : arch=x86_64 syscall=openat success=yes exit=36 a0=0x23 a1=0x7ffd080ff15f a2=O_RDONLY|O_NOFOLLOW|O_CLOEXEC|O_PATH a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.463:444) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.463:444) : item=0 name=event.MAI inode=17071631 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.463:444) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.463:444) : arch=x86_64 syscall=openat success=yes exit=35 a0=0x24 a1=0x7ffd080ffc15 a2=O_RDWR|O_NOFOLLOW|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.465:445) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.465:445) : item=0 name=./mysql/event.MAI inode=17071631 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.465:445) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.465:445) : arch=x86_64 syscall=readlink success=no exit=EINVAL(Invalid argument) a0=0x7ffd080ffa00 a1=0x7ffd080ff800 a2=0x1ff a3=0x4 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.465:446) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.465:446) : item=0 name=./mysql/event.MAD inode=17071632 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.465:446) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.465:446) : arch=x86_64 syscall=openat success=yes exit=36 a0=AT_FDCWD a1=0x5639bf2a6e98 a2=O_RDWR|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.483:447) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.483:447) : item=0 name=./mysql/ inode=17107433 dev=fd:00 mode=dir,700 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.483:447) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.483:447) : arch=x86_64 syscall=openat success=yes exit=37 a0=AT_FDCWD a1=0x7f31683795d0 a2=O_RDONLY|O_NONBLOCK|O_DIRECTORY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.495:448) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.495:448) : item=0 name=./mysql/gtid_slave_pos.frm inode=17071651 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.495:448) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.495:448) : arch=x86_64 syscall=openat success=yes exit=37 a0=AT_FDCWD a1=0x7f3168378390 a2=O_RDONLY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:21.504:449) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:21.504:449) : item=1 name=./multi-master.info inode=17071656 dev=fd:00 mode=file,660 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=PATH msg=audit(03/10/22 18:48:21.504:449) : item=0 name=./ inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=PARENT cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:21.504:449) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:21.504:449) : arch=x86_64 syscall=openat success=yes exit=37 a0=AT_FDCWD a1=0x5639bf284c90 a2=O_RDWR|O_CREAT|O_CLOEXEC a3=0x1b0 items=2 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
+type=PROCTITLE msg=audit(03/10/22 18:48:46.165:455) : proctitle=/usr/libexec/mariadbd --basedir=/usr 
+type=PATH msg=audit(03/10/22 18:48:46.165:455) : item=0 name=./ inode=17107420 dev=fd:00 mode=dir,755 ouid=mysql ogid=mysql rdev=00:00 obj=system_u:object_r:mysqld_db_t:s0 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(03/10/22 18:48:46.165:455) : cwd=/var/lib/mysql 
+type=SYSCALL msg=audit(03/10/22 18:48:46.165:455) : arch=x86_64 syscall=openat success=yes exit=39 a0=AT_FDCWD a1=0x7f316832d060 a2=O_RDONLY|O_NONBLOCK|O_DIRECTORY|O_CLOEXEC a3=0x0 items=1 ppid=1 pid=1342 auid=unset uid=mysql gid=mysql euid=mysql suid=mysql fsuid=mysql egid=mysql sgid=mysql fsgid=mysql tty=(none) ses=unset comm=mariadbd exe=/usr/libexec/mariadbd subj=system_u:system_r:mysqld_t:s0 key=mariadb_audit 
+----
