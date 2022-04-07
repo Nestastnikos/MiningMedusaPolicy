@@ -6,18 +6,9 @@ open Audit
 type VsCandidates = {
   Fs: VirtualSpaceFilesystem list;
   Processes: VirtualSpaceProcess list;
-}
+  Rules: Rule list; }
 
 type Constraint = { Path: string; Permissions: VirtualSpacePermissions }
-
-
-let allFilesEntry = { PathName = "/"; IsRecursive = true; IsAddition = true; }
-let allFilesVs = { Name = "all_files"; Paths = List.singleton allFilesEntry}
-let allProcessesVs = {
-  Name = "all_processes";
-  EnteredTree = ("domain",true);
-  VirtualSpaces = List.singleton (allFilesVs, AllVsPermissions)
-  }
 
 
 let mineBasicRules auditLogEntries =
@@ -25,14 +16,10 @@ let mineBasicRules auditLogEntries =
     match Seq.isEmpty uncoveredEntries with
     | true -> vsCandidates
     | false ->
-      if Seq.length uncoveredEntries % 10 = 0 then
-        printfn "Another 0"
-
       let entry = Seq.head uncoveredEntries
 
       // TODO: change the implementation so it actually finds out based on syscall what
       // the VsPermissions should be. AllVsPermissions are now just placeholder.
-      // TODO: The solution might be to iterate over each item in the list
       let (subject, object, vsPermissions) = (entry.Uid, List.last entry.Items, AllVsPermissions)
 
       // TODO: For now we keep it as simple as possible, this step si not necessary, we can allow duplicates
@@ -48,9 +35,9 @@ let mineBasicRules auditLogEntries =
 
       let processVs = {
         Name = subject;
-        EnteredTree = (String.concat "/" ["domain"; subject], false);
-        VirtualSpaces = [(fsVs, vsPermissions)]
-      }
+        EnteredTree = (String.concat "/" ["domain"; subject], false); }
+
+      let rule = { Subject = processVs; Object = fsVs; Permissions = vsPermissions; }
 
       // cover similar entries
       // TODO: Change this to actually filter only entries which's syscall requires the same VS permissions
@@ -61,16 +48,16 @@ let mineBasicRules auditLogEntries =
 
       let newCandidates = {
         Fs = vsCandidates.Fs |> List.append [fsVs];
-        Processes = vsCandidates.Processes |> List.append [processVs]
-      }
+        Processes = vsCandidates.Processes |> List.append [processVs];
+        Rules = vsCandidates.Rules |> List.append [rule]; }
 
       mineBasicRulesRec remainingEntries newCandidates
-  mineBasicRulesRec auditLogEntries { Fs = []; Processes = []}
+  mineBasicRulesRec auditLogEntries { Fs = []; Processes = []; Rules = []; }
 
 
 // Consider whether "sticky" info is somehow useful to me
 let candidates =
-  "./Fei.Backend.Main/Resources/full-mysqld_t.log"
+  "./Fei.Backend.Main/Resources/fraction-mysqld_t.log"
   |> File.ReadAllLines
   |> parseToAuditLogEntries
   |> mineBasicRules

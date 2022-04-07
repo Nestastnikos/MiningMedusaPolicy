@@ -54,7 +54,7 @@ module Utils
     let getCanonicalPath cwd targetPath =
       match StringUtils.head targetPath with
       | '.' -> //relative path
-          String.concat "" [ cwd;targetPath.[2..] ]
+          String.concat "/" [ cwd;targetPath.[2..] ]
       | '/' -> // absolute path
           targetPath
       | _ -> // only the name of the directory
