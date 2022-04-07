@@ -8,6 +8,7 @@ module VirtualSpace
 
     let AllVsPermissions = VirtualSpacePermissions.Read ||| VirtualSpacePermissions.Write ||| VirtualSpacePermissions.See
 
+    type FullPath = FullPath of string
 
     type PathEntry = {
       PathName: string;
@@ -15,12 +16,10 @@ module VirtualSpace
       IsAddition: bool; }
 
     type VirtualSpaceFilesystem = {
-      Name: string;
+      Identifier: string;
       Paths: PathEntry list; }
 
-    type VirtualSpaceProcess = {
-      Name: string;
-      EnteredTree: string * IsRecursive; }
+    type VirtualSpaceProcess = { Identifier: string * string; }
 
     type Rule = {
       Subject: VirtualSpaceProcess;

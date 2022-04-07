@@ -9,6 +9,10 @@ module Audit
     | Character
     | Socket
 
+  type Nametype =
+    | Parent
+    | Other
+
   [<FlagsAttribute>]
   type PermissionFlags = Read = 1 | Write = 2 | Execute = 4
 
@@ -17,7 +21,7 @@ module Audit
   type AuditLog = {
     Id: int;
     Proctitle: string;
-    Items: string list;
+    Items: (string * Nametype) list;
     Mode: ModeType * PermissionFlags[]
     Uid: string;
     SubjectContext: SElinuxContext
@@ -26,8 +30,7 @@ module Audit
     Success: bool;
     ExitedWithFailure: bool;
     Command: string;
-    ExecutedPath: string;
-  }
+    ExecutedPath: string; }
 
 
   let toMode input =
@@ -78,10 +81,16 @@ module Audit
 
   let castToIsSuccess input =
     match input with
+    | None -> raise (ArgumentException("None cannot be casted"))
     | Some (value:string) ->
       value.Equals("yes", StringComparison.Ordinal)
-    | None -> raise (ArgumentException("None cannot be casted"))
 
+  let castToNametype input =
+    match input with
+    | "PARENT" ->
+      Nametype.Parent
+    | _ ->
+      Nametype.Other
 
   let toAuditLog (data: Map<string, string list>) =
     let getId data = data |> Map.find "id" |> ListUtils.fstValueOrNone |> CastUtils.optionToInt
@@ -90,7 +99,8 @@ module Audit
       let items = data |> Map.tryFind "item" |> CastUtils.optionToList |> List.map (fun x -> int x)
       let cwd = data |> Map.find "cwd" |> ListUtils.fstValueOrNone |> CastUtils.optionToString
       let names = data |> Map.tryFind "name" |> CastUtils.optionToList |> List.map (fun x -> PathUtils.getCanonicalPath cwd x)
-      (List.zip items names) |> List.sortBy(fun (index, value) -> index) |> List.map (fun (index,value) -> value)
+      let nametypes = data |> Map.tryFind "nametype" |> CastUtils.optionToList |> List.map (fun x -> castToNametype x)
+      (List.zip3 items names nametypes) |> List.sortBy(fun (index, value, nametype) -> index) |> List.map (fun (index,value,nametype) -> (value,nametype))
 
     let getMode data = data |> Map.find "mode" |> ListUtils.fstValueOrNone |> castToModeAndPermissionFlags
     let getExitedWithFailure data = data |> Map.find "exit" |> ListUtils.fstValueOrNone |> castToIsFailureCode
