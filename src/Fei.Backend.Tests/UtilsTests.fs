@@ -9,14 +9,14 @@ let Setup () =
     ()
 
 [<Test>]
-let MapUtilsConcatCreatesNewList () =
+let ``MapUtils Concat creates new list`` () =
     let input = Seq.ofList [Map ([| ("a", "b") |])]
     let result = MapUtils.concat input
 
     (Map.find "a" result).ShouldBe ["b"]
 
 [<Test>]
-let MapUtilsConcatJoinsOnlyElementsWithTheSameKey () =
+let ``MapUtils Concat joins elements with the same key`` () =
     let input = Seq.ofList [Map ([| ("a", "b") |]); Map ([| ("b", "b")|])]
     let result = MapUtils.concat input
 
@@ -24,23 +24,23 @@ let MapUtilsConcatJoinsOnlyElementsWithTheSameKey () =
     (Map.find "b" result).ShouldBe ["b"]
 
 [<Test>]
-let MapUtilsConcatJoinsValuesWithTheSameKeyToList () =
+let ``MapUtils Concat joins keys values with the same key to list`` () =
     let input = Seq.ofList [Map ([| ("a", "b") |]); Map ([| ("a", "c")|])]
     let result = MapUtils.concat input
 
     (Map.find "a" result).ShouldBe ["b"; "c"]
 
 [<Test>]
-let ListUtilsFstValueOrEmptyReturnsEmpty () =
+let ``ListUtils - FstValueOrEmpty returns None when the list is empty``() =
     let result = ListUtils.fstValueOrNone []
     result.ShouldBe None
 
 [<Test>]
-let ListUtilsFstValueOrEmptyReturnsFirst () =
+let ``ListUtils - FstValueOrEmpty returns first when list contains only one value`` () =
     let result = ListUtils.fstValueOrNone (["a"])
     result.ShouldBe (Some("a"))
 
 [<Test>]
-let ListUtilsFstValueOrEmptyReturnsFirstWhenMultipleValues () =
+let ``ListUtils - FstValueOrEmpty returns first when list contains multiple values`` () =
     let result = ListUtils.fstValueOrNone (["a"; "b"])
     result.ShouldBe (Some("a"))

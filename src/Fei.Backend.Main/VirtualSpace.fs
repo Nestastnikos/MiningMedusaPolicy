@@ -1,14 +1,12 @@
 module VirtualSpace
-    open System
+  open System
+  open CommonTypes
 
-    type IsRecursive = bool
+  let isRecursive nametype = nametype = Nametype.Parent
 
+  module Types =
     [<FlagsAttribute>]
     type VirtualSpacePermissions = Read = 1 | Write = 2 | See = 4
-
-    let AllVsPermissions = VirtualSpacePermissions.Read ||| VirtualSpacePermissions.Write ||| VirtualSpacePermissions.See
-
-    type FullPath = FullPath of string
 
     type PathEntry = {
       PathName: string;
@@ -19,9 +17,17 @@ module VirtualSpace
       Identifier: string;
       Paths: PathEntry list; }
 
-    type VirtualSpaceProcess = { Identifier: string * string; }
+    type ProcessIdentifier = Uid * Proctitle
 
     type Rule = {
-      Subject: VirtualSpaceProcess;
+      Subject: ProcessIdentifier;
       Object: VirtualSpaceFilesystem;
       Permissions: VirtualSpacePermissions; }
+
+    type Constraint = { Uid: Uid; Resource: (FullPath * Nametype); Permissions: VirtualSpacePermissions }
+
+
+  module Constants =
+    open Types
+
+    let AllVsPermissions = VirtualSpacePermissions.Read ||| VirtualSpacePermissions.Write ||| VirtualSpacePermissions.See

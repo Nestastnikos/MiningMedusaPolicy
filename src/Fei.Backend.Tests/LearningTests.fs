@@ -58,6 +58,13 @@ let StringGetCanonicalPath () =
     (PathUtils.getCanonicalPath cwd example2).ShouldBe "/test"
 
 [<Test>]
+let ``GetCanonicalPath - slash at the end of cwd`` () =
+    let example = "./test"
+    let cwd = "/var/lib"
+
+    (PathUtils.getCanonicalPath cwd example).ShouldBe "/var/lib/test"
+
+[<Test>]
 let ListOrdering () =
     let input = [(1, "Item2") ; (0, "Item1")]
     let output = input |> List.sortBy (fun (x,y) -> x)

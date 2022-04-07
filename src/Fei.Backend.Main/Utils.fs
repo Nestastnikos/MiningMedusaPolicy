@@ -51,10 +51,16 @@ module Utils
 
 
   module PathUtils =
+    open VirtualSpace.Types
+
     let getCanonicalPath cwd targetPath =
       match StringUtils.head targetPath with
       | '.' -> //relative path
-          String.concat "/" [ cwd;targetPath.[2..] ]
+        match String.length cwd with
+          | 1 ->
+            String.concat "" [ cwd;targetPath.[2..] ]
+          | _ ->
+            String.concat "/" [ cwd;targetPath.[2..] ]
       | '/' -> // absolute path
           targetPath
       | _ -> // only the name of the directory

@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CommonTypes.fs" />
     <Compile Include="VirtualSpace.fs" />
     <Compile Include="Utils.fs" />
     <Compile Include="Audit.fs" />

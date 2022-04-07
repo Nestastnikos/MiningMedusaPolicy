@@ -2,16 +2,13 @@ module Audit
   open System
   open System.Text.RegularExpressions
   open Utils
+  open CommonTypes
 
   type ModeType =
     | Directory
     | File
     | Character
     | Socket
-
-  type Nametype =
-    | Parent
-    | Other
 
   [<FlagsAttribute>]
   type PermissionFlags = Read = 1 | Write = 2 | Execute = 4
@@ -22,15 +19,16 @@ module Audit
     Id: int;
     Proctitle: string;
     Items: (string * Nametype) list;
-    Mode: ModeType * PermissionFlags[]
+    // Mode: ModeType * PermissionFlags[]
     Uid: string;
-    SubjectContext: SElinuxContext
-    ObjectContext: SElinuxContext;
-    Syscall: string; // TODO: replace placeholder type
-    Success: bool;
-    ExitedWithFailure: bool;
-    Command: string;
-    ExecutedPath: string; }
+    // SubjectContext: SElinuxContext
+    // ObjectContext: SElinuxContext;
+    // Syscall: string; // TODO: replace placeholder type
+    // Success: bool;
+    // ExitedWithFailure: bool;
+    // Command: string;
+    // ExecutedPath: string;
+    }
 
 
   let toMode input =
@@ -116,15 +114,15 @@ module Audit
       Id = getId data;
       Proctitle = getProctitle data;
       Items = getItems data;
-      Mode = getMode data;
+      // Mode = getMode data;
       Uid = getUid data;
-      ObjectContext = getObjectContext data;
-      SubjectContext = getSubjectContext data;
-      Syscall = getSyscall data;
-      Success = getIsSuccess data;
-      ExitedWithFailure = getExitedWithFailure data;
-      Command = getCommand data;
-      ExecutedPath = getExecutedPath data;
+      // ObjectContext = getObjectContext data;
+      // SubjectContext = getSubjectContext data;
+      // Syscall = getSyscall data;
+      // Success = getIsSuccess data;
+      // ExitedWithFailure = getExitedWithFailure data;
+      // Command = getCommand data;
+      // ExecutedPath = getExecutedPath data;
     }
 
 
