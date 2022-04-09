@@ -28,6 +28,9 @@ module Utils
         Some(first)
       | _ -> None
 
+    let test condition (list: 'a list) =
+      condition list = true
+
   module CastUtils =
     open System
     let optionToString option =
@@ -86,3 +89,11 @@ module Utils
         Some { FullPath = input; Segments = segments; Depth = segments.Length-1; }
       | _ ->
         None
+
+    let getParentPath path =
+    match List.rev path.Segments with
+    | [] | [_] ->
+      None
+    | first::tail ->
+      let fullPath = (List.rev tail |> String.concat "/").[1..]
+      toPath fullPath
