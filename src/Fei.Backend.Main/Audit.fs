@@ -2,7 +2,7 @@ module Audit
   open System
   open System.Text.RegularExpressions
   open Utils
-  open CommonTypes
+  open Types.CommonTypes
 
   type ModeType =
     | Directory

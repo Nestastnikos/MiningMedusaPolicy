@@ -45,13 +45,18 @@ module Utils
         x
       | None -> raise (ArgumentException("Invalid cast"))
 
+    let optionToValueOrError option =
+      match option with
+      | Some x ->
+        x
+      | None -> raise (ArgumentException("Invalid cast"))
 
   module StringUtils =
     let head (input:string) = input.[0]
 
 
   module PathUtils =
-    open VirtualSpace.Types
+    open Types.CommonTypes
 
     let getCanonicalPath cwd targetPath =
       match StringUtils.head targetPath with
@@ -69,3 +74,15 @@ module Utils
           String.concat "" [ cwd;targetPath ]
         | _ ->
           String.concat "/" [ cwd;targetPath ]
+
+    let toPath input =
+      match StringUtils.head input with
+      | '/' ->
+        let segments =
+          input.[1..].Split "/"
+          |> Array.toList
+          |> List.append ["/"]
+          |> List.filter (fun x -> not (x.Length = 0))
+        Some { FullPath = input; Segments = segments; Depth = segments.Length-1; }
+      | _ ->
+        None

@@ -4,10 +4,11 @@
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="CommonTypes.fs" />
-    <Compile Include="VirtualSpace.fs" />
+    <Compile Include="Types.fs" />
     <Compile Include="Utils.fs" />
+    <Compile Include="VirtualSpace.fs" />
     <Compile Include="Audit.fs" />
+    <Compile Include="PolicyMining.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 </Project>

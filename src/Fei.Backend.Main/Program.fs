@@ -1,5 +1,6 @@
 ﻿open System.IO
 open Audit
+open Utils
 open VirtualSpace
 open VirtualSpace.Types
 open VirtualSpace.Constants
@@ -17,9 +18,11 @@ let mineBasicRules auditLogEntries =
         entry.Items
         |> List.map (fun item -> { Uid=entry.Uid; Resource=item; Permissions=AllVsPermissions})
         |> List.map (fun x ->
-          let (path, nametype) = x.Resource
-          let pathEntry = { PathName = path; IsRecursive = isRecursive nametype; IsAddition = true; }
-          let fsVs = { Identifier = path; Paths = [pathEntry] }
+          let (fullPath, nametype) = x.Resource
+          // FIXME: we shouldnt do this option stuff here, it should be validated earlier
+          let path = CastUtils.optionToValueOrError (PathUtils.toPath fullPath)
+          let pathEntry = { Path = path; IsRecursive = isRecursive nametype; IsAddition = true; }
+          let fsVs = { Identifier = fullPath; Paths = [pathEntry] }
           let processIdentifier = (entry.Uid, entry.Proctitle)
           { Subject = processIdentifier; Object = fsVs; Permissions = x.Permissions; })
 
@@ -29,7 +32,7 @@ let mineBasicRules auditLogEntries =
         |> Seq.filter (fun u ->
           not (u.Items |> List.forall
             (fun (path, _) ->
-              rules |> List.exists (fun r -> (List.head r.Object.Paths).PathName = path &&
+              rules |> List.exists (fun r -> (List.head r.Object.Paths).Path.FullPath = path &&
                                               r.Subject = (u.Uid, u.Proctitle)))))
 
       mineBasicRulesRec remainingEntries (rules |> List.append newRules)

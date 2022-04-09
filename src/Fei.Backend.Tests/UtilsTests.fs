@@ -44,3 +44,45 @@ let ``ListUtils - FstValueOrEmpty returns first when list contains only one valu
 let ``ListUtils - FstValueOrEmpty returns first when list contains multiple values`` () =
     let result = ListUtils.fstValueOrNone (["a"; "b"])
     result.ShouldBe (Some("a"))
+
+[<Test>]
+let ``PathUtils - toPath - root dir to path`` () =
+    let input = "/"
+    let result = PathUtils.toPath input
+
+    result.IsSome.ShouldBeTrue ()
+    result.Value.FullPath.ShouldBe input
+    result.Value.Segments.ShouldBe ["/"]
+    result.Value.Depth.ShouldBe 0
+
+[<Test>]
+let ``PathUtils - toPath - nested dir to path`` () =
+    let input = "/var"
+    let result = PathUtils.toPath input
+    result.IsSome.ShouldBeTrue ()
+    result.Value.FullPath.ShouldBe input
+    result.Value.Depth.ShouldBe 1
+    result.Value.Segments.ShouldBe ["/"; "var"]
+
+[<Test>]
+let ``PathUtils - toPath - nested dir to path preserves ordering`` () =
+    let input = "/var/lib"
+    let result = PathUtils.toPath input
+    result.IsSome.ShouldBeTrue ()
+    result.Value.FullPath.ShouldBe input
+    result.Value.Depth.ShouldBe 2
+    result.Value.Segments.ShouldBe ["/"; "var"; "lib"]
+
+[<Test>]
+let ``PathUtils - toPath - file with extension is preserved as one`` () =
+    let input = "/var/lib/mariadb.log"
+    let result = PathUtils.toPath input
+    result.IsSome.ShouldBeTrue ()
+    result.Value.FullPath.ShouldBe input
+    result.Value.Depth.ShouldBe 3
+    result.Value.Segments.ShouldBe ["/"; "var"; "lib"; "mariadb.log"]
+
+let ``PathUtils - toPath - returns empty on path in non-canonic form`` () =
+    let input = "halabala"
+    let result = PathUtils.toPath input
+    result.IsNone.ShouldBeTrue ()

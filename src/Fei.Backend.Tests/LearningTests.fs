@@ -69,3 +69,12 @@ let ListOrdering () =
     let input = [(1, "Item2") ; (0, "Item1")]
     let output = input |> List.sortBy (fun (x,y) -> x)
     (List.head output).ShouldBe ((0, "Item1"))
+
+[<Test>]
+let ``Record comparison does not compare references but rather content`` () =
+    let fullPath = "/etc/lib/mysql"
+    let path = CastUtils.optionToValueOrError (PathUtils.toPath fullPath)
+
+    let fsVs1 = {| Identifier = fullPath; Paths = [{| Path = path; IsRecursive = false; IsAddition = true |}]|}
+    let fsVs2 = {| Identifier = fullPath; Paths = [{| Path = path; IsRecursive = false; IsAddition = true |}]|}
+    fsVs1.ShouldBe fsVs2

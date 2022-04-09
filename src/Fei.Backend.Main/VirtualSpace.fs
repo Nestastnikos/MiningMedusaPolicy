@@ -1,6 +1,6 @@
 module VirtualSpace
   open System
-  open CommonTypes
+  open Types.CommonTypes
 
   let isRecursive nametype = nametype = Nametype.Parent
 
@@ -9,15 +9,13 @@ module VirtualSpace
     type VirtualSpacePermissions = Read = 1 | Write = 2 | See = 4
 
     type PathEntry = {
-      PathName: string;
+      Path: Path;
       IsRecursive: bool;
       IsAddition: bool; }
 
     type VirtualSpaceFilesystem = {
       Identifier: string;
       Paths: PathEntry list; }
-
-    type ProcessIdentifier = Uid * Proctitle
 
     type Rule = {
       Subject: ProcessIdentifier;
