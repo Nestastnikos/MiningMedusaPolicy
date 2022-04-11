@@ -28,8 +28,17 @@ module Utils
         Some(first)
       | _ -> None
 
-    let test condition (list: 'a list) =
-      condition list = true
+    let areAllEqual list  =
+      list
+      |> List.pairwise
+      |> List.forall (fun (x,y) -> x = y)
+
+    let flatten listOfLists =
+      listOfLists
+      |> List.fold (fun acc x -> acc @ x) []
+
+    let mapForBoth fnc list1 list2 =
+      (list1 |> List.map fnc, list2 |> List.map fnc)
 
   module CastUtils =
     open System
@@ -46,7 +55,7 @@ module Utils
       match option with
       | Some (x:'a list) ->
         x
-      | None -> raise (ArgumentException("Invalid cast"))
+      | None -> []
 
     let optionToValueOrError option =
       match option with
@@ -60,6 +69,7 @@ module Utils
 
   module PathUtils =
     open Types.CommonTypes
+    open System.Text.RegularExpressions
 
     let getCanonicalPath cwd targetPath =
       match StringUtils.head targetPath with
@@ -91,9 +101,12 @@ module Utils
         None
 
     let getParentPath path =
-    match List.rev path.Segments with
-    | [] | [_] ->
-      None
-    | first::tail ->
-      let fullPath = (List.rev tail |> String.concat "/").[1..]
-      toPath fullPath
+      match List.rev path.Segments with
+      | [] | [_] ->
+        None
+      | first::tail ->
+        let fullPath = (List.rev tail |> String.concat "/").[1..]
+        toPath fullPath
+
+    let isPathParent parentCandidate testedPath =
+      Regex.IsMatch(testedPath.FullPath, parentCandidate.FullPath + "/+.")

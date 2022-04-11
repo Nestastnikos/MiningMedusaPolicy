@@ -45,5 +45,6 @@ let candidates =
   |> File.ReadAllLines
   |> parseToAuditLogEntries
   |> mineBasicRules
+  |> PolicyMining.mergeRules
 
 printfn "%A" candidates

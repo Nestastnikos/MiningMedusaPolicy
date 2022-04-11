@@ -22,7 +22,6 @@ module VirtualSpaceTests
         pathEntry.IsRecursive.ShouldBeTrue ()
 
     [<Test>]
-    [<Ignore ("Not implemented yet")>]
     let ``mergeRules leave single rule as it is`` () =
         let processIdentifier = ("mysql", "/var/lib/mariadbd");
 
@@ -38,7 +37,6 @@ module VirtualSpaceTests
         rule.Permissions.ShouldBe AllVsPermissions
 
     [<Test>]
-    [<Ignore ("Not implemented yet")>]
     let ``mergeRules wont merge rules on depth 1`` () =
         let processIdentifier = ("mysql", "/var/lib/mariadbd");
 
@@ -56,7 +54,6 @@ module VirtualSpaceTests
         result.ShouldBe input
 
     [<Test>]
-    [<Ignore ("Not implemented yet")>]
     let ``mergeRules merge two rules whose fs virtual space contain single file path`` () =
         let processIdentifier = ("mysql", "/var/lib/mariadbd");
 
@@ -86,7 +83,6 @@ module VirtualSpaceTests
         rule.ShouldBe expectedRule
 
     [<Test>]
-    [<Ignore ("Not implemented yet")>]
     let ``mergeRules merge two rules where rule contain fs vs which is parent of fs vs in second rule`` () =
         let processIdentifier = ("mysql", "/var/lib/mariadbd");
 
@@ -104,8 +100,7 @@ module VirtualSpaceTests
             Subject = processIdentifier;
             Object = {
                 Identifier = "var_lib_mysql_with_children";
-                Paths = [{ Path = path1; IsRecursive = false; IsAddition = true};
-                            { Path = path2; IsRecursive = false; IsAddition = true; }]};
+                Paths = fsVs1.Paths @ fsVs2.Paths }
             Permissions = AllVsPermissions
             }
 
@@ -116,7 +111,6 @@ module VirtualSpaceTests
         rule.ShouldBe expectedRule
 
     [<Test>]
-    [<Ignore ("Not implemented yet")>]
     let ``mergeRules won't merge two rules where rules contain fs vs's which do not share the same parent`` () =
         let processIdentifier = ("mysql", "/var/lib/mariadbd");
 
@@ -135,7 +129,6 @@ module VirtualSpaceTests
         result.ShouldBe input
 
     [<Test>]
-    [<Ignore ("Not implemented yet")>]
     let ``mergeRules will remove duplicate rules`` () =
         let processIdentifier = ("mysql", "/var/lib/mariadbd");
 
@@ -152,7 +145,6 @@ module VirtualSpaceTests
         (List.head result).ShouldBe (List.head input)
 
     [<Test>]
-    [<Ignore ("Not implemented yet")>]
     let ``mergeRules will create rules with exceptions`` () =
         let processIdentifier = ("mysql", "/var/lib/mariadbd");
 
@@ -168,7 +160,7 @@ module VirtualSpaceTests
 
         let expectedFsVs = {
             Identifier = "etc_lib_mysql_with_exceptions";
-            Paths = [{ Path = path1; IsRecursive = true; IsAddition = true}; { Path = path2; IsRecursive = false; IsAddition = false }];
+            Paths = fsVs1.Paths @ fsVs2.Paths;
         }
         let expectedRule = {
             Subject = processIdentifier; Object = expectedFsVs; Permissions = AllVsPermissions
@@ -180,7 +172,6 @@ module VirtualSpaceTests
 
 
     [<Test>]
-    [<Ignore ("Not implemented yet")>]
     let ``mergeRules can merge both additions and exceptions to single rule`` () =
         let processIdentifier = ("mysql", "/var/lib/mariadbd");
 
@@ -200,9 +191,7 @@ module VirtualSpaceTests
 
         let expectedFsVs = {
             Identifier = "etc_lib_mysql_with_children_with_exceptions";
-            Paths = [{ Path = path1; IsRecursive = false ; IsAddition = true};
-                        { Path = path2; IsRecursive = false; IsAddition = true};
-                        { Path = path3; IsRecursive = false; IsAddition = false }; ];
+            Paths = fsVs1.Paths @ fsVs2.Paths @ fsVs3.Paths;
         }
 
         let expectedRule = {
@@ -217,14 +206,14 @@ module VirtualSpaceTests
     let ``getNameForVirtualSpace - rule with / is renamed to all_files`` () =
         let path = CastUtils.optionToValueOrError (PathUtils.toPath "/")
         let input = { Identifier = "/"; Paths = [{ Path = path; IsRecursive = false; IsAddition = true }]}
-        let result = PolicyMining.getNameForVirtualSpace input
+        let result = PolicyMining.getNameForVirtualSpace input.Paths
         result.ShouldBe "all_files"
 
     [<Test>]
     let ``getNameForVirtualSpace - rule with one path has replaced / with _`` () =
         let path = CastUtils.optionToValueOrError (PathUtils.toPath "/var/lib/mysql")
         let input = { Identifier = "/"; Paths = [{ Path = path; IsRecursive = false; IsAddition = true }]}
-        let result = PolicyMining.getNameForVirtualSpace input
+        let result = PolicyMining.getNameForVirtualSpace input.Paths
         result.ShouldBe "var_lib_mysql"
 
     [<Test>]
@@ -236,7 +225,7 @@ module VirtualSpaceTests
 
         let fsVs = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = false; IsAddition = true };
                         { Path = path2; IsRecursive = false; IsAddition = true }]}
-        let result = PolicyMining.getNameForVirtualSpace fsVs
+        let result = PolicyMining.getNameForVirtualSpace fsVs.Paths
         result.ShouldBe "var_lib_mysql_some"
 
     [<Test>]
@@ -248,7 +237,7 @@ module VirtualSpaceTests
 
         let fsVs = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = false; IsAddition = true };
                         { Path = path2; IsRecursive = false; IsAddition = false}]}
-        let result = PolicyMining.getNameForVirtualSpace fsVs
+        let result = PolicyMining.getNameForVirtualSpace fsVs.Paths
         result.ShouldBe "var_lib_mysql_some"
 
     [<Test>]
@@ -260,7 +249,7 @@ module VirtualSpaceTests
 
         let fsVs = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true };
                         { Path = path2; IsRecursive = false; IsAddition = true }]}
-        let result = PolicyMining.getNameForVirtualSpace fsVs
+        let result = PolicyMining.getNameForVirtualSpace fsVs.Paths
         result.ShouldBe "var_lib_mysql_with_children"
 
     [<Test>]
@@ -272,7 +261,7 @@ module VirtualSpaceTests
 
         let fsVs = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true };
                         { Path = path2; IsRecursive = false; IsAddition = false}]}
-        let result = PolicyMining.getNameForVirtualSpace fsVs
+        let result = PolicyMining.getNameForVirtualSpace fsVs.Paths
         result.ShouldBe "var_lib_mysql_with_exceptions"
 
     [<Test>]
@@ -287,5 +276,5 @@ module VirtualSpaceTests
         let fsVs = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true };
                         { Path = path2; IsRecursive = false; IsAddition = false};
                         { Path = path3; IsRecursive = false; IsAddition = true }]}
-        let result = PolicyMining.getNameForVirtualSpace fsVs
+        let result = PolicyMining.getNameForVirtualSpace fsVs.Paths
         result.ShouldBe "var_lib_mysql_with_children_with_exceptions"

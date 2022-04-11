@@ -11,7 +11,7 @@ module VirtualSpace
     type PathEntry = {
       Path: Path;
       IsRecursive: bool;
-      IsAddition: bool; }
+      IsAddition: bool;}
 
     type VirtualSpaceFilesystem = {
       Identifier: string;

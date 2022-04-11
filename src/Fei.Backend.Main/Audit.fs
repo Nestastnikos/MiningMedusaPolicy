@@ -19,7 +19,7 @@ module Audit
     Id: int;
     Proctitle: string;
     Items: (string * Nametype) list;
-    // Mode: ModeType * PermissionFlags[]
+    Mode: ModeType * PermissionFlags[]
     Uid: string;
     // SubjectContext: SElinuxContext
     // ObjectContext: SElinuxContext;
@@ -114,7 +114,7 @@ module Audit
       Id = getId data;
       Proctitle = getProctitle data;
       Items = getItems data;
-      // Mode = getMode data;
+      Mode = getMode data;
       Uid = getUid data;
       // ObjectContext = getObjectContext data;
       // SubjectContext = getSubjectContext data;
