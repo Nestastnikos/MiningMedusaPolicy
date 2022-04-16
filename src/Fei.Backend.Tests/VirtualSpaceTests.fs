@@ -278,3 +278,76 @@ module VirtualSpaceTests
                         { Path = path3; IsRecursive = false; IsAddition = true }]}
         let result = PolicyMining.getNameForVirtualSpace fsVs.Paths
         result.ShouldBe "var_lib_mysql_with_children_with_exceptions"
+
+    [<Test>]
+    let ``simplifyRule - leaves already simplified rule as it is`` () =
+        let fullPath1 = "/var/lib/mysql"
+        let path1 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath1)
+
+        let fsVs = { Identifier = "var_lib_mysql"; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true }] }
+        let result = PolicyMining.simplifyVirtualSpace fsVs
+        result.ShouldBe fsVs
+
+    [<Test>]
+    let ``simplifyRule - simplified vs with two paths to one when contains recursive directory`` () =
+        let fullPath1 = "/var/lib/mysql"
+        let fullPath2 = "/var/lib/mysql/mariadb.log"
+        let path1 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath1)
+        let path2 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath2)
+
+        let fsVs = { Identifier = "var_lib_mysql_with_children"; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true };
+                    { Path = path2; IsRecursive = true; IsAddition = true }] }
+
+        let expectedFsVs = { Identifier = "var_lib_mysql"; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true }; ]}
+
+        let result = PolicyMining.simplifyVirtualSpace fsVs
+        result.ShouldBe expectedFsVs
+
+    [<Test>]
+    let ``simplifyRule - rule with two rules where one is addition and another not won't change anything`` () =
+        let fullPath1 = "/var/lib/mysql"
+        let fullPath2 = "/var/lib/mysql/mariadb.log"
+        let path1 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath1)
+        let path2 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath2)
+
+        let fsVs = { Identifier = "var_lib_mysql_with_exceptions"; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true };
+                    { Path = path2; IsRecursive = false; IsAddition = false }] }
+
+        let result = PolicyMining.simplifyVirtualSpace fsVs
+        result.ShouldBe fsVs
+
+    [<Test>]
+    let ``simplifyRule - rule with multiple recursive dirs will leave only top recursive dir`` () =
+        let fullPath1 = "/var/lib/mysql"
+        let fullPath2 = "/var/lib/mysql/mysql"
+        let fullPath3 = "/var/lib/mysql/moetechta"
+        let path1 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath1)
+        let path2 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath2)
+        let path3 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath3)
+
+        let fsVs = { Identifier = "var_lib_mysql_with_children"; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true };
+                    { Path = path2; IsRecursive = true; IsAddition = true };
+                    { Path = path3; IsRecursive = true; IsAddition = true }] }
+
+        let expectedFsVs = { Identifier = "var_lib_mysql"; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true }]}
+
+        let result = PolicyMining.simplifyVirtualSpace fsVs
+        result.Paths.Length.ShouldBe 1
+        result.ShouldBe expectedFsVs
+
+    [<Test>]
+    let ``simplifyRule - rule with multiple recursive dirs on different depths sharing different parents`` () =
+        let fullPath1 = "/var/lib"
+        let fullPath2 = "/var/log/mysql"
+        let fullPath3 = "/var/etc/nosql/moetechta"
+        let path1 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath1)
+        let path2 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath2)
+        let path3 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath3)
+
+        let fsVs = { Identifier = "var_with_children"; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true };
+                    { Path = path2; IsRecursive = true; IsAddition = true };
+                    { Path = path3; IsRecursive = true; IsAddition = true }] }
+
+        let result = PolicyMining.simplifyVirtualSpace fsVs
+        result.Paths.Length.ShouldBe 3
+        result.ShouldBe fsVs
