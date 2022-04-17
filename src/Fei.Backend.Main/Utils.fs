@@ -109,4 +109,4 @@ module Utils
         toPath fullPath
 
     let isPathParent parentCandidate testedPath =
-      Regex.IsMatch(testedPath.FullPath, parentCandidate.FullPath + "/+.")
+      Regex.IsMatch(testedPath.FullPath, parentCandidate.FullPath + "+.")

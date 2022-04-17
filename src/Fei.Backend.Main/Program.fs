@@ -46,5 +46,6 @@ let candidates =
   |> parseToAuditLogEntries
   |> mineBasicRules
   |> PolicyMining.mergeRules
+  |> PolicyMining.simplifyRules
 
 printfn "%A" candidates

@@ -122,10 +122,10 @@ module PolicyMining
 
   let simplifyVirtualSpace fsVs =
     let rec simplifyPathsRec paths currentDepth maxDepth =
-      match currentDepth with
-      | depth when depth = maxDepth ->
+      match currentDepth = maxDepth with
+      | true ->
           paths
-      | _ ->
+      | false ->
         let remainingPaths =
           paths
           |> List.filter (fun x -> x.Path.Depth = currentDepth && x.IsRecursive)
@@ -134,11 +134,18 @@ module PolicyMining
               acc |> List.filter (fun p ->
                 not (PathUtils.isPathParent x.Path p.Path &&
                 x.IsAddition = p.IsAddition)))
-              fsVs.Paths
+              paths
         simplifyPathsRec remainingPaths (currentDepth+1) maxDepth
 
     let depths = fsVs.Paths |> List.map (fun x -> x.Path.Depth) |> List.sort
     let (min, max) = (depths |> List.head, depths |> List.last)
     let result = simplifyPathsRec (fsVs.Paths) min max
     { Identifier = getNameForVirtualSpace result; Paths = result}
+
+  let simplifyRules rules =
+    rules
+    |> List.map (fun x -> {
+      Subject = x.Subject;
+      Object = simplifyVirtualSpace x.Object;
+      Permissions = x.Permissions })
 
