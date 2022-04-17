@@ -17,8 +17,17 @@ module PolicyMining
     | paths when
         paths |> List.forall (fun x -> x.IsAddition) &&
         paths |> List.exists (fun x -> x.Path.Depth <> (List.head paths).Path.Depth) ->
-      let parent = paths |> List.minBy (fun x -> x.Path.Depth)
-      (pathToVirtualSpaceName parent.Path.FullPath) + "_with_children"
+      let parentCandidate = paths |> List.minBy (fun x -> x.Path.Depth)
+      let isParent parent =
+        paths
+        |> List.except [parent]
+        |> List.forall (fun x -> PathUtils.isPathParent parent.Path x.Path)
+      match isParent parentCandidate with
+      | true ->
+        (pathToVirtualSpaceName parentCandidate.Path.FullPath) + "_with_children"
+      | false ->
+        let parentPath = parentCandidate.Path |> PathUtils.getParentPath |> CastUtils.optionToValueOrError
+        (pathToVirtualSpaceName parentPath.FullPath) + "_with_children"
     | paths when
         paths |> List.forall (fun x -> x.Path.Depth = (List.head paths).Path.Depth) &&
         paths

@@ -82,7 +82,15 @@ let ``PathUtils - toPath - file with extension is preserved as one`` () =
     result.Value.Depth.ShouldBe 3
     result.Value.Segments.ShouldBe ["/"; "var"; "lib"; "mariadb.log"]
 
+[<Test>]
 let ``PathUtils - toPath - returns empty on path in non-canonic form`` () =
     let input = "halabala"
     let result = PathUtils.toPath input
     result.IsNone.ShouldBeTrue ()
+
+[<Test>]
+let ``PathUtils - getParent - returns parent`` () =
+    let input = "/var/lib"
+    let path = PathUtils.toPath input
+    let parent = path |> CastUtils.optionToValueOrError |> PathUtils.getParentPath |> CastUtils.optionToValueOrError
+    parent.FullPath.ShouldBe "/var"
