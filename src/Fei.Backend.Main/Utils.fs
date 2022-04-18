@@ -24,9 +24,12 @@ module Utils
   module ListUtils =
     let fstValueOrNone list =
       match list with
-      | first::_->
-        Some(first)
-      | _ -> None
+      | Some values ->
+        match values with
+        | first::_->
+          Some(first)
+        | _ -> None
+      | None -> None
 
     let areAllEqual list  =
       list
@@ -65,6 +68,9 @@ module Utils
 
   module StringUtils =
     let head (input:string) = input.[0]
+    let skipLast (count: int) (input: string) =
+      let length = String.length input
+      input.[.. length - count - 1]
 
 
   module PathUtils =

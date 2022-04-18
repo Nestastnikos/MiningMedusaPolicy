@@ -4,23 +4,15 @@ module Audit
   open Utils
   open Types.CommonTypes
 
-  type ModeType =
-    | Directory
-    | File
-    | Character
-    | Socket
-
-  [<FlagsAttribute>]
-  type PermissionFlags = Read = 1 | Write = 2 | Execute = 4
-
-  type SElinuxContext = { User: string; Role: string; Type: string }
-
-  type AuditLog = {
-    Id: int;
-    Proctitle: string;
-    Items: (string * Nametype) list;
-    Mode: ModeType * PermissionFlags[]
-    Uid: string;
+  type AuditLogRaw = {
+    Id: string option
+    Proctitle: string option
+    ItemIndexes: string list option
+    ItemNames: string list option
+    ItemNametypes: string list option
+    Mode: string option
+    Uid: string option
+    CurrentWorkingDirectory: string option
     // SubjectContext: SElinuxContext
     // ObjectContext: SElinuxContext;
     // Syscall: string; // TODO: replace placeholder type
@@ -31,31 +23,22 @@ module Audit
     }
 
 
-  let toMode input =
-    match input with
-    | "dir" -> Directory
-    | "file" -> File
-    | "character" -> Character
-    | "socket" -> Socket
-    | _ -> raise (ArgumentException "Unknown mode type")
+  // let toPermissionFlags input =
+  //     input
+  //     |> Seq.map(fun x -> string x |> int)
+  //     |> Seq.map (fun x -> enum<PermissionFlags>(x))
+  //     |> Seq.toArray
 
 
-  let toPermissionFlags input =
-      input
-      |> Seq.map(fun x -> string x |> int)
-      |> Seq.map (fun x -> enum<PermissionFlags>(x))
-      |> Seq.toArray
-
-
-  let castToModeAndPermissionFlags input =
-    match input with
-    | Some (x:string) ->
-      match x.Split "," with
-      | [|mode; permission|]
-      | [|mode; _; permission|] ->
-        (toMode mode),(toPermissionFlags permission)
-      | _ -> raise (ArgumentException("Unknown mode format"))
-    | None -> raise (ArgumentException("None cannot be casted"))
+  // let castToModeAndPermissionFlags input =
+  //   match input with
+  //   | Some (x:string) ->
+  //     match x.Split "," with
+  //     | [|mode; permission|]
+  //     | [|mode; _; permission|] ->
+  //       (toMode mode),(toPermissionFlags permission)
+  //     | _ -> raise (ArgumentException("Unknown mode format"))
+  //   | None -> raise (ArgumentException("None cannot be casted"))
 
 
   let castToIsFailureCode code =
@@ -66,15 +49,15 @@ module Audit
     | None -> raise (ArgumentException("None cannot be casted"))
 
 
-  let castToSelinuxContext input =
-    match input with
-    | Some (value:string) ->
-      match value.Split ":" with
-      | [|seuser;serole;setype|]
-      | [|seuser;serole;setype;_|] ->
-        { User = seuser; Role = serole; Type = setype; }
-      | _ -> raise (ArgumentException("Invalid field format"))
-    | None -> raise (ArgumentException("None cannot be casted"))
+  // let castToSelinuxContext input =
+  //   match input with
+  //   | Some (value:string) ->
+  //     match value.Split ":" with
+  //     | [|seuser;serole;setype|]
+  //     | [|seuser;serole;setype;_|] ->
+  //       { User = seuser; Role = serole; Type = setype; }
+  //     | _ -> raise (ArgumentException("Invalid field format"))
+  //   | None -> raise (ArgumentException("None cannot be casted"))
 
 
   let castToIsSuccess input =
@@ -91,31 +74,33 @@ module Audit
       Nametype.Other
 
   let toAuditLog (data: Map<string, string list>) =
-    let getId data = data |> Map.find "id" |> ListUtils.fstValueOrNone |> CastUtils.optionToInt
-    let getProctitle data = data |> Map.find "proctitle" |> ListUtils.fstValueOrNone |> CastUtils.optionToString
-    let getItems data =
-      let items = data |> Map.tryFind "item" |> CastUtils.optionToList |> List.map (fun x -> int x)
-      let cwd = data |> Map.find "cwd" |> ListUtils.fstValueOrNone |> CastUtils.optionToString
-      let names = data |> Map.tryFind "name" |> CastUtils.optionToList |> List.map (fun x -> PathUtils.getCanonicalPath cwd x)
-      let nametypes = data |> Map.tryFind "nametype" |> CastUtils.optionToList |> List.map (fun x -> castToNametype x)
-      (List.zip3 items names nametypes) |> List.sortBy(fun (index, value, nametype) -> index) |> List.map (fun (index,value,nametype) -> (value,nametype))
+    let getId () = data |> Map.tryFind "id" |> ListUtils.fstValueOrNone
+    let getProctitle () = data |> Map.tryFind "proctitle" |> ListUtils.fstValueOrNone
+    let getCurrentWorkingDirectory () = data |> Map.tryFind "cwd" |> ListUtils.fstValueOrNone
+    let getItemIndexes () = data |> Map.tryFind "item"
+    let getItemNames () = data |> Map.tryFind "name"
+    let getItemNametypes () = data |> Map.tryFind "nametype"
 
-    let getMode data = data |> Map.find "mode" |> ListUtils.fstValueOrNone |> castToModeAndPermissionFlags
-    let getExitedWithFailure data = data |> Map.find "exit" |> ListUtils.fstValueOrNone |> castToIsFailureCode
-    let getUid data = data |> Map.find "uid" |> ListUtils.fstValueOrNone |> CastUtils.optionToString
-    let getObjectContext data = data |> Map.find "obj" |> ListUtils.fstValueOrNone |> castToSelinuxContext
-    let getSubjectContext data = data |> Map.find "subj" |> ListUtils.fstValueOrNone |> castToSelinuxContext
-    let getSyscall data = data |> Map.find "syscall" |> ListUtils.fstValueOrNone |> CastUtils.optionToString
-    let getIsSuccess data = data |> Map.find "success" |> ListUtils.fstValueOrNone |> castToIsSuccess
-    let getCommand data = data |> Map.find "comm" |> ListUtils.fstValueOrNone |> CastUtils.optionToString
-    let getExecutedPath data = data |> Map.find "exe" |> ListUtils.fstValueOrNone |> CastUtils.optionToString
+    let getMode () = data |> Map.tryFind "mode" |> ListUtils.fstValueOrNone
+    let getUid () = data |> Map.tryFind "uid" |> ListUtils.fstValueOrNone
+    // let getExitedWithFailure () = data |> Map.tryFind "exit" |> ListUtils.fstValueOrNone
+    // let getObjectContext () = data |> Map.find "obj" |> ListUtils.fstValueOrNone
+    // let getSubjectContext () = data |> Map.find "subj" |> ListUtils.fstValueOrNone
+    // let getSyscall () = data |> Map.find "syscall" |> ListUtils.fstValueOrNone
+    // let getIsSuccess () = data |> Map.find "success" |> ListUtils.fstValueOrNone
+    // let getCommand () = data |> Map.find "comm" |> ListUtils.fstValueOrNone
+    // let getExecutedPath () = data |> Map.find "exe" |> ListUtils.fstValueOrNone
 
     {
-      Id = getId data;
-      Proctitle = getProctitle data;
-      Items = getItems data;
-      Mode = getMode data;
-      Uid = getUid data;
+      Id = getId ();
+      Proctitle = getProctitle ();
+      Mode = getMode ();
+      Uid = getUid ();
+      ItemIndexes = getItemIndexes ();
+      ItemNames = getItemNames ();
+      ItemNametypes = getItemNametypes ();
+      CurrentWorkingDirectory = getCurrentWorkingDirectory ();
+
       // ObjectContext = getObjectContext data;
       // SubjectContext = getSubjectContext data;
       // Syscall = getSyscall data;

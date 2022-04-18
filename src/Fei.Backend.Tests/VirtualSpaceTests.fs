@@ -23,7 +23,7 @@ module VirtualSpaceTests
 
     [<Test>]
     let ``mergeRules leave single rule as it is`` () =
-        let processIdentifier = ("mysql", "/var/lib/mariadbd");
+        let processIdentifier = ("mysql" |> Uid, "/var/lib/mariadbd" |> Proctitle);
 
         let fullPath = "/var/lib/mysql"
         let path = CastUtils.optionToValueOrError (PathUtils.toPath fullPath)
@@ -38,7 +38,7 @@ module VirtualSpaceTests
 
     [<Test>]
     let ``mergeRules wont merge rules on depth 1`` () =
-        let processIdentifier = ("mysql", "/var/lib/mariadbd");
+        let processIdentifier = ("mysql" |> Uid, "/var/lib/mariadbd" |> Proctitle);
 
         let fullPath1 = "/etc"
         let fullPath2 = "/var"
@@ -55,7 +55,7 @@ module VirtualSpaceTests
 
     [<Test>]
     let ``mergeRules merge two rules whose fs virtual space contain single file path`` () =
-        let processIdentifier = ("mysql", "/var/lib/mariadbd");
+        let processIdentifier = ("mysql" |> Uid, "/var/lib/mariadbd" |> Proctitle);
 
         let fullPath1 = "/var/lib/mysql/mysql.log"
         let fullPath2 = "/var/lib/mysql/MAIN.EDI"
@@ -84,7 +84,7 @@ module VirtualSpaceTests
 
     [<Test>]
     let ``mergeRules merge two rules where rule contain fs vs which is parent of fs vs in second rule`` () =
-        let processIdentifier = ("mysql", "/var/lib/mariadbd");
+        let processIdentifier = ("mysql" |> Uid, "/var/lib/mariadbd" |> Proctitle);
 
         let fullPath1 = "/var/lib/mysql"
         let fullPath2 = "/var/lib/mysql/MAIN.EDI"
@@ -112,7 +112,7 @@ module VirtualSpaceTests
 
     [<Test>]
     let ``mergeRules won't merge two rules where rules contain fs vs's which do not share the same parent`` () =
-        let processIdentifier = ("mysql", "/var/lib/mariadbd");
+        let processIdentifier = ("mysql" |> Uid, "/var/lib/mariadbd" |> Proctitle);
 
         let fullPath1 = "/etc/lib/mysql"
         let fullPath2 = "/var/lib/mysql/MAIN.EDI"
@@ -130,7 +130,7 @@ module VirtualSpaceTests
 
     [<Test>]
     let ``mergeRules will remove duplicate rules`` () =
-        let processIdentifier = ("mysql", "/var/lib/mariadbd");
+        let processIdentifier = ("mysql" |> Uid, "/var/lib/mariadbd" |> Proctitle);
 
         let fullPath = "/etc/lib/mysql"
         let path = CastUtils.optionToValueOrError (PathUtils.toPath fullPath)
@@ -146,7 +146,7 @@ module VirtualSpaceTests
 
     [<Test>]
     let ``mergeRules will create rules with exceptions`` () =
-        let processIdentifier = ("mysql", "/var/lib/mariadbd");
+        let processIdentifier = ("mysql" |> Uid, "/var/lib/mariadbd" |> Proctitle);
 
         let fullPath1 = "/etc/lib/mysql"
         let fullPath2 = "/etc/lib/mysql/mariadb.log"
@@ -173,7 +173,7 @@ module VirtualSpaceTests
 
     [<Test>]
     let ``mergeRules can merge both additions and exceptions to single rule`` () =
-        let processIdentifier = ("mysql", "/var/lib/mariadbd");
+        let processIdentifier = ("mysql" |> Uid, "/var/lib/mariadbd" |> Proctitle);
 
         let fullPath1 = "/etc/lib/mysql"
         let fullPath2 = "/etc/lib/mysql/mariadb.log"

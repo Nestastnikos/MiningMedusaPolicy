@@ -32,17 +32,17 @@ let ``MapUtils Concat joins keys values with the same key to list`` () =
 
 [<Test>]
 let ``ListUtils - FstValueOrEmpty returns None when the list is empty``() =
-    let result = ListUtils.fstValueOrNone []
+    let result = Some([]) |> ListUtils.fstValueOrNone
     result.ShouldBe None
 
 [<Test>]
 let ``ListUtils - FstValueOrEmpty returns first when list contains only one value`` () =
-    let result = ListUtils.fstValueOrNone (["a"])
+    let result = Some(["a"]) |> ListUtils.fstValueOrNone
     result.ShouldBe (Some("a"))
 
 [<Test>]
 let ``ListUtils - FstValueOrEmpty returns first when list contains multiple values`` () =
-    let result = ListUtils.fstValueOrNone (["a"; "b"])
+    let result = Some(["a"; "b"]) |> ListUtils.fstValueOrNone
     result.ShouldBe (Some("a"))
 
 [<Test>]
@@ -94,3 +94,9 @@ let ``PathUtils - getParent - returns parent`` () =
     let path = PathUtils.toPath input
     let parent = path |> CastUtils.optionToValueOrError |> PathUtils.getParentPath |> CastUtils.optionToValueOrError
     parent.FullPath.ShouldBe "/var"
+
+[<Test>]
+let ``StringUtils - skipLast skips the last character`` () =
+    let input = "/test/"
+    let result = input |> StringUtils.skipLast 1
+    result.ShouldBe "/test"

@@ -8,6 +8,7 @@
     <Compile Include="Utils.fs" />
     <Compile Include="VirtualSpace.fs" />
     <Compile Include="Audit.fs" />
+    <Compile Include="Validation.fs" />
     <Compile Include="PolicyMining.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
