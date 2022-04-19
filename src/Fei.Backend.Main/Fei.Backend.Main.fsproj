@@ -11,6 +11,7 @@
     <Compile Include="Audit.fs" />
     <Compile Include="Validation.fs" />
     <Compile Include="PolicyMining.fs" />
+    <Compile Include="ProgramOutput.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>

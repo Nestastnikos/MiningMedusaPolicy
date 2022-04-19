@@ -172,20 +172,19 @@ let mineBasicRules syscallInfo applicableEntries =
         |> List.map (fun item -> { Uid=entry.Uid; Resource=item; Permissions=syscallInfo |> Map.find entry.Syscall })
         |> List.map (fun x ->
           let (fullPath, nametype) = x.Resource
-          // FIXME: we shouldnt do this option stuff here, it should be validated earlier
           let path = PathUtils.toPath fullPath
-          let pathEntry = { Path = path; IsRecursive = isRecursive nametype; IsAddition = true; IsSticky = entry.IsSticky}
+          let pathEntry = { Path = path; IsRecursive = isRecursive nametype; IsAddition = true; IsSticky = entry.IsSticky }
           let fsVs = { Identifier = fullPath; Paths = [pathEntry] }
           let processIdentifier = (entry.Uid, entry.Proctitle)
           { Subject = processIdentifier; Object = fsVs; Permissions = x.Permissions; })
 
-      // TODO: Change this to actually filter only entries which's syscall requires the same VS permissions // as current entry
       let remainingEntries =
         uncoveredEntries
         |> Seq.filter (fun u ->
           not (u.Items |> List.forall
             (fun (path, _) ->
               rules |> List.exists (fun r -> (List.head r.Object.Paths).Path.FullPath = path &&
+                                              r.Permissions = (syscallInfo |> Map.find entry.Syscall) &&
                                               r.Subject = (u.Uid, u.Proctitle)))))
 
       mineBasicRulesRec remainingEntries (rules |> List.append newRules)
