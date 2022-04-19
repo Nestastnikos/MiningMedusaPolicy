@@ -1,27 +1,31 @@
 ﻿open System.IO
 open Newtonsoft.Json
-open VirtualSpaceTypes
 open VirtualSpace
-open System
+open VirtualSpaceTypes
+open Validation
 
-type DtoSyscallInfoInput = { Name: string; Permissions: string; }
-type SyscallInfoOutput = Map<string, VirtualSpacePermissions>
+type SyscallInfoInputDto = { Name: string; Permissions: string; }
+type SyscallInfo = Map<string, VirtualSpacePermissions>
 
 let syscallInfo =
-  JsonConvert.DeserializeObject<DtoSyscallInfoInput list>
+  JsonConvert.DeserializeObject<SyscallInfoInputDto list>
     ("./Fei.Backend.Main/Resources/syscall_config.json" |> File.ReadAllLines |> String.concat "")
   |> List.fold (fun acc x -> acc |> Map.add x.Name (convertToPermissions x.Permissions)) (Map([]))
 
 let applicableEntries, unapplicableEntries =
-  "./Fei.Backend.Main/Resources/full-mysqld_t.log"
+  "./Fei.Backend.Main/Resources/fraction-mysqld_t.log"
   |> File.ReadAllLines
   |> (Audit.parseToAuditLogEntries >> Validation.validateAuditLogEntries)
   |> Seq.toList
-  |> List.partition (fun x -> syscallInfo |> Map.containsKey x.Syscall)
+  |> ProgramOutput.partitionBySyscall syscallInfo
 
-let candidates =
+let candidatesJson =
   applicableEntries
   |> (PolicyMining.mineBasicRules syscallInfo >> PolicyMining.mergeRules >> PolicyMining.simplifyRules)
+  |> List.map (fun x -> ProgramOutput.mapToRuleDto x)
+  |> JsonConvert.SerializeObject
 
-// printfn "%A" candidates
-printfn "%A" unapplicableEntries
+File.WriteAllText ("test.json", candidatesJson);
+
+// printfn "%A" candidatesJson
+// printfn "%A" unapplicableEntries

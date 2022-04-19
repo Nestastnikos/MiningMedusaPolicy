@@ -174,7 +174,7 @@ let mineBasicRules syscallInfo applicableEntries =
           let (fullPath, nametype) = x.Resource
           // FIXME: we shouldnt do this option stuff here, it should be validated earlier
           let path = PathUtils.toPath fullPath
-          let pathEntry = { Path = path; IsRecursive = isRecursive nametype; IsAddition = true; IsSticky = entry.IsSticky}
+          let pathEntry = { Path = path; IsRecursive = isRecursive nametype; IsAddition = true; IsSticky = entry.IsSticky }
           let fsVs = { Identifier = fullPath; Paths = [pathEntry] }
           let processIdentifier = (entry.Uid, entry.Proctitle)
           { Subject = processIdentifier; Object = fsVs; Permissions = x.Permissions; })
