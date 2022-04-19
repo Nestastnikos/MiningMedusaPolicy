@@ -48,7 +48,7 @@ let ``ListUtils - FstValueOrEmpty returns first when list contains multiple valu
 [<Test>]
 let ``PathUtils - toPath - root dir to path`` () =
     let input = "/"
-    let result = PathUtils.toPath input
+    let result = PathUtils.tryToPath input
 
     result.IsSome.ShouldBeTrue ()
     result.Value.FullPath.ShouldBe input
@@ -58,7 +58,7 @@ let ``PathUtils - toPath - root dir to path`` () =
 [<Test>]
 let ``PathUtils - toPath - nested dir to path`` () =
     let input = "/var"
-    let result = PathUtils.toPath input
+    let result = PathUtils.tryToPath input
     result.IsSome.ShouldBeTrue ()
     result.Value.FullPath.ShouldBe input
     result.Value.Depth.ShouldBe 1
@@ -67,7 +67,7 @@ let ``PathUtils - toPath - nested dir to path`` () =
 [<Test>]
 let ``PathUtils - toPath - nested dir to path preserves ordering`` () =
     let input = "/var/lib"
-    let result = PathUtils.toPath input
+    let result = PathUtils.tryToPath input
     result.IsSome.ShouldBeTrue ()
     result.Value.FullPath.ShouldBe input
     result.Value.Depth.ShouldBe 2
@@ -76,7 +76,7 @@ let ``PathUtils - toPath - nested dir to path preserves ordering`` () =
 [<Test>]
 let ``PathUtils - toPath - file with extension is preserved as one`` () =
     let input = "/var/lib/mariadb.log"
-    let result = PathUtils.toPath input
+    let result = PathUtils.tryToPath input
     result.IsSome.ShouldBeTrue ()
     result.Value.FullPath.ShouldBe input
     result.Value.Depth.ShouldBe 3
@@ -85,13 +85,13 @@ let ``PathUtils - toPath - file with extension is preserved as one`` () =
 [<Test>]
 let ``PathUtils - toPath - returns empty on path in non-canonic form`` () =
     let input = "halabala"
-    let result = PathUtils.toPath input
+    let result = PathUtils.tryToPath input
     result.IsNone.ShouldBeTrue ()
 
 [<Test>]
 let ``PathUtils - getParent - returns parent`` () =
     let input = "/var/lib"
-    let path = PathUtils.toPath input
+    let path = PathUtils.tryToPath input
     let parent = path |> CastUtils.optionToValueOrError |> PathUtils.getParentPath |> CastUtils.optionToValueOrError
     parent.FullPath.ShouldBe "/var"
 

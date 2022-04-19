@@ -4,9 +4,9 @@ module Types
       | Parent
       | Other
 
-    type Uid = Uid of string
-    type FullPath = FullPath of string
-    type Proctitle = Proctitle of string
+    type Uid = string
+    type FullPath = string
+    type Proctitle = string
 
     type ProcessIdentifier = Uid * Proctitle
 

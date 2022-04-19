@@ -2,8 +2,6 @@ module VirtualSpace
   open System
   open Types.CommonTypes
 
-  let isRecursive nametype = nametype = Nametype.Parent
-
   module Types =
     [<FlagsAttribute>]
     type VirtualSpacePermissions = Read = 1 | Write = 2 | See = 4
@@ -11,7 +9,8 @@ module VirtualSpace
     type PathEntry = {
       Path: Path;
       IsRecursive: bool;
-      IsAddition: bool;}
+      IsAddition: bool;
+      IsSticky: bool option; }
 
     type VirtualSpaceFilesystem = {
       Identifier: string;

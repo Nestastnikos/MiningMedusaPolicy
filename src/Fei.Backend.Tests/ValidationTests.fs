@@ -80,8 +80,8 @@ let ``createItems - returns results on correct name path`` path =
   let (path, nametype) = result |> List.head
 
   (result |> List.length).ShouldBe 1
-  path.ShouldBe (expected |> FullPath)
-  nametype.ShouldBe (Nametype.Parent)
+  path.ShouldBe expected
+  nametype.ShouldBe Parent
 
 [<TestCase ("/test", "/var/lib/mysql", "/test")>]
 [<TestCase ("./test", "/var/lib/mysql", "/var/lib/mysql/test")>]
@@ -93,8 +93,8 @@ let ``createItems - can correctly concatenate cwd and item name`` path =
   let (path, nametype) = result |> List.head
 
   (result |> List.length).ShouldBe 1
-  path.ShouldBe (expected |> FullPath)
-  nametype.ShouldBe (Nametype.Parent)
+  path.ShouldBe expected
+  nametype.ShouldBe Parent
 
 [<Test>]
 let ``createModeAndStickyBit - creates correctly mode and sets sticky bit`` () =

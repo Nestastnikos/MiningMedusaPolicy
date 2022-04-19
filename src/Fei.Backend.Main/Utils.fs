@@ -76,6 +76,7 @@ module Utils
   module PathUtils =
     open Types.CommonTypes
     open System.Text.RegularExpressions
+    open System
 
     let getCanonicalPath cwd targetPath =
       match StringUtils.head targetPath with
@@ -94,7 +95,7 @@ module Utils
         | _ ->
           String.concat "/" [ cwd;targetPath ]
 
-    let toPath input =
+    let tryToPath input =
       match StringUtils.head input with
       | '/' ->
         let segments =
@@ -106,13 +107,25 @@ module Utils
       | _ ->
         None
 
+    let toPath input =
+      match StringUtils.head input with
+      | '/' ->
+        let segments =
+          input.[1..].Split "/"
+          |> Array.toList
+          |> List.append ["/"]
+          |> List.filter (fun x -> not (x.Length = 0))
+        { FullPath = input; Segments = segments; Depth = segments.Length-1; }
+      | _ ->
+        raise (ArgumentException("The path does not have parent - " + input))
+
     let getParentPath path =
       match List.rev path.Segments with
       | [] | [_] ->
         None
       | first::tail ->
         let fullPath = (List.rev tail |> String.concat "/").[1..]
-        toPath fullPath
+        tryToPath fullPath
 
     let isPathParent parentCandidate testedPath =
       Regex.IsMatch(testedPath.FullPath, parentCandidate.FullPath + "+.")

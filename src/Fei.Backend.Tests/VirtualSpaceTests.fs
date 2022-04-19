@@ -16,9 +16,9 @@ module VirtualSpaceTests
     let ``PathEntry has correct isRecursive bool`` () =
         let input = [("/var/lib/mysql", Nametype.Parent)]
         let (fullPath, nametype) = List.head input
-        let path = CastUtils.optionToValueOrError (PathUtils.toPath fullPath)
+        let path = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath)
 
-        let pathEntry = { Path = path; IsRecursive = isRecursive nametype; IsAddition = true; }
+        let pathEntry = { Path = path; IsRecursive = isRecursive nametype; IsAddition = true; IsSticky = Some(false); }
         pathEntry.IsRecursive.ShouldBeTrue ()
 
     [<Test>]
@@ -26,8 +26,8 @@ module VirtualSpaceTests
         let processIdentifier = ("mysql" |> Uid, "/var/lib/mariadbd" |> Proctitle);
 
         let fullPath = "/var/lib/mysql"
-        let path = CastUtils.optionToValueOrError (PathUtils.toPath fullPath)
-        let fsVs = { Identifier = fullPath; Paths = [{ Path = path; IsRecursive = false; IsAddition = true }]}
+        let path = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath)
+        let fsVs = { Identifier = fullPath; Paths = [{ Path = path; IsRecursive = false; IsAddition = true; IsSticky = Some(false) }]}
         let input = [ { Subject = processIdentifier; Object = fsVs; Permissions = AllVsPermissions }]
 
         let result = PolicyMining.mergeRules input
@@ -42,11 +42,11 @@ module VirtualSpaceTests
 
         let fullPath1 = "/etc"
         let fullPath2 = "/var"
-        let path1 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath1)
-        let path2 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath2)
+        let path1 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath1)
+        let path2 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath2)
 
-        let fsVs1 = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true }] }
-        let fsVs2 = { Identifier = fullPath2; Paths = [{ Path = path2; IsRecursive = true; IsAddition = true }] }
+        let fsVs1 = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true; IsSticky = Some(false) }] }
+        let fsVs2 = { Identifier = fullPath2; Paths = [{ Path = path2; IsRecursive = true; IsAddition = true; IsSticky = Some(false) }] }
         let input = [ { Subject = processIdentifier; Object = fsVs1; Permissions = AllVsPermissions };
                         { Subject = processIdentifier; Object = fsVs2; Permissions = AllVsPermissions }; ]
 
@@ -59,11 +59,11 @@ module VirtualSpaceTests
 
         let fullPath1 = "/var/lib/mysql/mysql.log"
         let fullPath2 = "/var/lib/mysql/MAIN.EDI"
-        let path1 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath1)
-        let path2 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath2)
+        let path1 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath1)
+        let path2 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath2)
 
-        let fsVs1 = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = false; IsAddition = true }]}
-        let fsVs2 = { Identifier = fullPath2; Paths = [{ Path = path2; IsRecursive = false; IsAddition = true }]}
+        let fsVs1 = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = false; IsAddition = true; IsSticky = Some(false) }]}
+        let fsVs2 = { Identifier = fullPath2; Paths = [{ Path = path2; IsRecursive = false; IsAddition = true; IsSticky = Some(false) }]}
         let input = [ { Subject = processIdentifier; Object = fsVs1; Permissions = AllVsPermissions };
                         { Subject = processIdentifier; Object = fsVs2; Permissions = AllVsPermissions }]
 
@@ -71,8 +71,8 @@ module VirtualSpaceTests
             Subject = processIdentifier;
             Object = {
                 Identifier = "var_lib_mysql_some";
-                Paths = [{ Path = path1; IsRecursive = false; IsAddition = true};
-                            { Path = path2; IsRecursive = false; IsAddition = true; }]};
+                Paths = [{ Path = path1; IsRecursive = false; IsAddition = true; IsSticky = Some(false)};
+                            { Path = path2; IsRecursive = false; IsAddition = true; IsSticky = Some(false); }]};
             Permissions = AllVsPermissions
             }
 
@@ -88,11 +88,11 @@ module VirtualSpaceTests
 
         let fullPath1 = "/var/lib/mysql"
         let fullPath2 = "/var/lib/mysql/MAIN.EDI"
-        let path1 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath1)
-        let path2 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath2)
+        let path1 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath1)
+        let path2 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath2)
 
-        let fsVs1 = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true }]}
-        let fsVs2 = { Identifier = fullPath2; Paths = [{ Path = path2; IsRecursive = false; IsAddition = true }]}
+        let fsVs1 = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true; IsSticky = Some(false) }]}
+        let fsVs2 = { Identifier = fullPath2; Paths = [{ Path = path2; IsRecursive = false; IsAddition = true; IsSticky = Some(false) }]}
         let input = [ { Subject = processIdentifier; Object = fsVs1; Permissions = AllVsPermissions };
                         { Subject = processIdentifier; Object = fsVs2; Permissions = AllVsPermissions }]
 
@@ -116,11 +116,11 @@ module VirtualSpaceTests
 
         let fullPath1 = "/etc/lib/mysql"
         let fullPath2 = "/var/lib/mysql/MAIN.EDI"
-        let path1 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath1)
-        let path2 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath2)
+        let path1 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath1)
+        let path2 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath2)
 
-        let fsVs1 = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true }]}
-        let fsVs2 = { Identifier = fullPath2; Paths = [{ Path = path2; IsRecursive = false; IsAddition = true }]}
+        let fsVs1 = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true; IsSticky = Some(false) }]}
+        let fsVs2 = { Identifier = fullPath2; Paths = [{ Path = path2; IsRecursive = false; IsAddition = true; IsSticky = Some(false) }]}
         let input = [ { Subject = processIdentifier; Object = fsVs1; Permissions = AllVsPermissions };
                         { Subject = processIdentifier; Object = fsVs2; Permissions = AllVsPermissions }]
 
@@ -133,10 +133,10 @@ module VirtualSpaceTests
         let processIdentifier = ("mysql" |> Uid, "/var/lib/mariadbd" |> Proctitle);
 
         let fullPath = "/etc/lib/mysql"
-        let path = CastUtils.optionToValueOrError (PathUtils.toPath fullPath)
+        let path = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath)
 
-        let fsVs1 = { Identifier = fullPath; Paths = [{ Path = path; IsRecursive = false; IsAddition = true }]}
-        let fsVs2 = { Identifier = fullPath; Paths = [{ Path = path; IsRecursive = false; IsAddition = true }]}
+        let fsVs1 = { Identifier = fullPath; Paths = [{ Path = path; IsRecursive = false; IsAddition = true; IsSticky = Some(false) }]}
+        let fsVs2 = { Identifier = fullPath; Paths = [{ Path = path; IsRecursive = false; IsAddition = true; IsSticky = Some(false) }]}
         let input = [ { Subject = processIdentifier; Object = fsVs1; Permissions = AllVsPermissions };
                         { Subject = processIdentifier; Object = fsVs2; Permissions = AllVsPermissions }; ]
 
@@ -150,11 +150,11 @@ module VirtualSpaceTests
 
         let fullPath1 = "/etc/lib/mysql"
         let fullPath2 = "/etc/lib/mysql/mariadb.log"
-        let path1 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath1)
-        let path2 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath2)
+        let path1 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath1)
+        let path2 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath2)
 
-        let fsVs1 = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true }]}
-        let fsVs2 = { Identifier = fullPath2; Paths = [{ Path = path2; IsRecursive = false; IsAddition = false }]}
+        let fsVs1 = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true; IsSticky = Some(false) }]}
+        let fsVs2 = { Identifier = fullPath2; Paths = [{ Path = path2; IsRecursive = false; IsAddition = false; IsSticky = Some(false) }]}
         let input = [ { Subject = processIdentifier; Object = fsVs1; Permissions = AllVsPermissions };
                         { Subject = processIdentifier; Object = fsVs2; Permissions = AllVsPermissions }; ]
 
@@ -178,13 +178,13 @@ module VirtualSpaceTests
         let fullPath1 = "/etc/lib/mysql"
         let fullPath2 = "/etc/lib/mysql/mariadb.log"
         let fullPath3 = "/etc/lib/mysql/passwd.log"
-        let path1 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath1)
-        let path2 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath2)
-        let path3 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath3)
+        let path1 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath1)
+        let path2 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath2)
+        let path3 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath3)
 
-        let fsVs1 = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = false; IsAddition = true }]}
-        let fsVs2 = { Identifier = fullPath2; Paths = [{ Path = path2; IsRecursive = false; IsAddition = true }]}
-        let fsVs3 = { Identifier = fullPath3; Paths = [{ Path = path3; IsRecursive = false; IsAddition = false }]}
+        let fsVs1 = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = false; IsAddition = true; IsSticky = Some(false) }]}
+        let fsVs2 = { Identifier = fullPath2; Paths = [{ Path = path2; IsRecursive = false; IsAddition = true; IsSticky = Some(false) }]}
+        let fsVs3 = { Identifier = fullPath3; Paths = [{ Path = path3; IsRecursive = false; IsAddition = false; IsSticky = Some(false) }]}
         let input = [ { Subject = processIdentifier; Object = fsVs1; Permissions = AllVsPermissions };
                         { Subject = processIdentifier; Object = fsVs2; Permissions = AllVsPermissions };
                         { Subject = processIdentifier; Object = fsVs3; Permissions = AllVsPermissions }; ]
@@ -204,15 +204,15 @@ module VirtualSpaceTests
 
     [<Test>]
     let ``getNameForVirtualSpace - rule with / is renamed to all_files`` () =
-        let path = CastUtils.optionToValueOrError (PathUtils.toPath "/")
-        let input = { Identifier = "/"; Paths = [{ Path = path; IsRecursive = false; IsAddition = true }]}
+        let path = CastUtils.optionToValueOrError (PathUtils.tryToPath "/")
+        let input = { Identifier = "/"; Paths = [{ Path = path; IsRecursive = false; IsAddition = true; IsSticky = Some(false) }]}
         let result = PolicyMining.getNameForVirtualSpace input.Paths
         result.ShouldBe "all_files"
 
     [<Test>]
     let ``getNameForVirtualSpace - rule with one path has replaced / with _`` () =
-        let path = CastUtils.optionToValueOrError (PathUtils.toPath "/var/lib/mysql")
-        let input = { Identifier = "/"; Paths = [{ Path = path; IsRecursive = false; IsAddition = true }]}
+        let path = CastUtils.optionToValueOrError (PathUtils.tryToPath "/var/lib/mysql")
+        let input = { Identifier = "/"; Paths = [{ Path = path; IsRecursive = false; IsAddition = true; IsSticky = Some(false) }]}
         let result = PolicyMining.getNameForVirtualSpace input.Paths
         result.ShouldBe "var_lib_mysql"
 
@@ -220,11 +220,11 @@ module VirtualSpaceTests
     let ``getNameForVirtualSpace - rule with multiple paths on the same depth have 'some' suffix`` () =
         let fullPath1 = "/var/lib/mysql/mariadb.log"
         let fullPath2 = "/var/lib/mysql/passwd.log"
-        let path1 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath1)
-        let path2 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath2)
+        let path1 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath1)
+        let path2 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath2)
 
-        let fsVs = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = false; IsAddition = true };
-                        { Path = path2; IsRecursive = false; IsAddition = true }]}
+        let fsVs = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = false; IsAddition = true; IsSticky = Some(false) };
+                        { Path = path2; IsRecursive = false; IsAddition = true; IsSticky = Some(false) }]}
         let result = PolicyMining.getNameForVirtualSpace fsVs.Paths
         result.ShouldBe "var_lib_mysql_some"
 
@@ -232,11 +232,11 @@ module VirtualSpaceTests
     let ``getNameForVirtualSpace - rule with restrictive path on the same depth have 'some' suffix`` () =
         let fullPath1 = "/var/lib/mysql/mariadb.log"
         let fullPath2 = "/var/lib/mysql/passwd.log"
-        let path1 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath1)
-        let path2 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath2)
+        let path1 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath1)
+        let path2 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath2)
 
-        let fsVs = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = false; IsAddition = true };
-                        { Path = path2; IsRecursive = false; IsAddition = false}]}
+        let fsVs = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = false; IsAddition = true; IsSticky = Some(false) };
+                        { Path = path2; IsRecursive = false; IsAddition = false; IsSticky = Some(false)}]}
         let result = PolicyMining.getNameForVirtualSpace fsVs.Paths
         result.ShouldBe "var_lib_mysql_some"
 
@@ -244,11 +244,11 @@ module VirtualSpaceTests
     let ``getNameForVirtualSpace - rule with multiple paths on different depth have 'with_children' suffix`` () =
         let fullPath1 = "/var/lib/mysql"
         let fullPath2 = "/var/lib/mysql/passwd.log"
-        let path1 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath1)
-        let path2 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath2)
+        let path1 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath1)
+        let path2 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath2)
 
-        let fsVs = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true };
-                        { Path = path2; IsRecursive = false; IsAddition = true }]}
+        let fsVs = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true; IsSticky = Some(false) };
+                        { Path = path2; IsRecursive = false; IsAddition = true; IsSticky = Some(false) }]}
         let result = PolicyMining.getNameForVirtualSpace fsVs.Paths
         result.ShouldBe "var_lib_mysql_with_children"
 
@@ -256,11 +256,11 @@ module VirtualSpaceTests
     let ``getNameForVirtualSpace - with recursive parent and restrictive path on different depth have 'with_exceptions' suffix`` () =
         let fullPath1 = "/var/lib/mysql"
         let fullPath2 = "/var/lib/mysql/passwd.log"
-        let path1 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath1)
-        let path2 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath2)
+        let path1 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath1)
+        let path2 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath2)
 
-        let fsVs = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true };
-                        { Path = path2; IsRecursive = false; IsAddition = false}]}
+        let fsVs = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true; IsSticky = Some(false) };
+                        { Path = path2; IsRecursive = false; IsAddition = false; IsSticky = Some(false)}]}
         let result = PolicyMining.getNameForVirtualSpace fsVs.Paths
         result.ShouldBe "var_lib_mysql_with_exceptions"
 
@@ -269,22 +269,22 @@ module VirtualSpaceTests
         let fullPath1 = "/var/lib/mysql"
         let fullPath2 = "/var/lib/mysql/passwd.log"
         let fullPath3 = "/var/lib/mysql/secrets.txt"
-        let path1 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath1)
-        let path2 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath2)
-        let path3 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath3)
+        let path1 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath1)
+        let path2 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath2)
+        let path3 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath3)
 
-        let fsVs = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true };
-                        { Path = path2; IsRecursive = false; IsAddition = false};
-                        { Path = path3; IsRecursive = false; IsAddition = true }]}
+        let fsVs = { Identifier = fullPath1; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true; IsSticky = Some(false) };
+                        { Path = path2; IsRecursive = false; IsAddition = false; IsSticky = Some(false)};
+                        { Path = path3; IsRecursive = false; IsAddition = true; IsSticky = Some(false) }]}
         let result = PolicyMining.getNameForVirtualSpace fsVs.Paths
         result.ShouldBe "var_lib_mysql_with_children_with_exceptions"
 
     [<Test>]
     let ``simplifyRule - leaves already simplified rule as it is`` () =
         let fullPath1 = "/var/lib/mysql"
-        let path1 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath1)
+        let path1 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath1)
 
-        let fsVs = { Identifier = "var_lib_mysql"; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true }] }
+        let fsVs = { Identifier = "var_lib_mysql"; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true; IsSticky = Some(false) }] }
         let result = PolicyMining.simplifyVirtualSpace fsVs
         result.ShouldBe fsVs
 
@@ -292,13 +292,13 @@ module VirtualSpaceTests
     let ``simplifyRule - simplified vs with two paths to one when contains recursive directory`` () =
         let fullPath1 = "/var/lib/mysql"
         let fullPath2 = "/var/lib/mysql/mariadb.log"
-        let path1 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath1)
-        let path2 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath2)
+        let path1 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath1)
+        let path2 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath2)
 
-        let fsVs = { Identifier = "var_lib_mysql_with_children"; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true };
-                    { Path = path2; IsRecursive = true; IsAddition = true }] }
+        let fsVs = { Identifier = "var_lib_mysql_with_children"; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true; IsSticky = Some(false) };
+                    { Path = path2; IsRecursive = true; IsAddition = true; IsSticky = Some(false) }] }
 
-        let expectedFsVs = { Identifier = "var_lib_mysql"; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true }; ]}
+        let expectedFsVs = { Identifier = "var_lib_mysql"; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true; IsSticky = Some(false) }; ]}
 
         let result = PolicyMining.simplifyVirtualSpace fsVs
         result.ShouldBe expectedFsVs
@@ -307,11 +307,11 @@ module VirtualSpaceTests
     let ``simplifyRule - rule with two rules where one is addition and another not won't change anything`` () =
         let fullPath1 = "/var/lib/mysql"
         let fullPath2 = "/var/lib/mysql/mariadb.log"
-        let path1 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath1)
-        let path2 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath2)
+        let path1 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath1)
+        let path2 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath2)
 
-        let fsVs = { Identifier = "var_lib_mysql_with_exceptions"; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true };
-                    { Path = path2; IsRecursive = false; IsAddition = false }] }
+        let fsVs = { Identifier = "var_lib_mysql_with_exceptions"; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true; IsSticky = Some(false) };
+                    { Path = path2; IsRecursive = false; IsAddition = false; IsSticky = Some(false) }] }
 
         let result = PolicyMining.simplifyVirtualSpace fsVs
         result.ShouldBe fsVs
@@ -321,15 +321,15 @@ module VirtualSpaceTests
         let fullPath1 = "/var/lib/mysql"
         let fullPath2 = "/var/lib/mysql/mysql"
         let fullPath3 = "/var/lib/mysql/moetechta"
-        let path1 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath1)
-        let path2 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath2)
-        let path3 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath3)
+        let path1 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath1)
+        let path2 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath2)
+        let path3 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath3)
 
-        let fsVs = { Identifier = "var_lib_mysql_with_children"; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true };
-                    { Path = path2; IsRecursive = true; IsAddition = true };
-                    { Path = path3; IsRecursive = true; IsAddition = true }] }
+        let fsVs = { Identifier = "var_lib_mysql_with_children"; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true; IsSticky = Some(false) };
+                    { Path = path2; IsRecursive = true; IsAddition = true; IsSticky = Some(false) };
+                    { Path = path3; IsRecursive = true; IsAddition = true; IsSticky = Some(false) }] }
 
-        let expectedFsVs = { Identifier = "var_lib_mysql"; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true }]}
+        let expectedFsVs = { Identifier = "var_lib_mysql"; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true; IsSticky = Some(false) }]}
 
         let result = PolicyMining.simplifyVirtualSpace fsVs
         result.Paths.Length.ShouldBe 1
@@ -340,13 +340,13 @@ module VirtualSpaceTests
         let fullPath1 = "/var/lib"
         let fullPath2 = "/var/log/mysql"
         let fullPath3 = "/var/etc/nosql/moetechta"
-        let path1 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath1)
-        let path2 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath2)
-        let path3 = CastUtils.optionToValueOrError (PathUtils.toPath fullPath3)
+        let path1 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath1)
+        let path2 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath2)
+        let path3 = CastUtils.optionToValueOrError (PathUtils.tryToPath fullPath3)
 
-        let fsVs = { Identifier = "var_with_children"; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true };
-                    { Path = path2; IsRecursive = true; IsAddition = true };
-                    { Path = path3; IsRecursive = true; IsAddition = true }] }
+        let fsVs = { Identifier = "var_with_children"; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true; IsSticky = Some(false) };
+                    { Path = path2; IsRecursive = true; IsAddition = true; IsSticky = Some(false) };
+                    { Path = path3; IsRecursive = true; IsAddition = true; IsSticky = Some(false) }] }
 
         let result = PolicyMining.simplifyVirtualSpace fsVs
         result.Paths.Length.ShouldBe 3

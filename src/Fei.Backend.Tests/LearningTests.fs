@@ -73,7 +73,7 @@ let ListOrdering () =
 [<Test>]
 let ``Record comparison does not compare references but rather content`` () =
     let fullPath = "/etc/lib/mysql"
-    let path = CastUtils.optionToValueOrError (PathUtils.toPath fullPath)
+    let path = PathUtils.toPath fullPath
 
     let fsVs1 = {| Identifier = fullPath; Paths = [{| Path = path; IsRecursive = false; IsAddition = true |}]|}
     let fsVs2 = {| Identifier = fullPath; Paths = [{| Path = path; IsRecursive = false; IsAddition = true |}]|}

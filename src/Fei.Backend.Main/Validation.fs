@@ -13,7 +13,7 @@ type ModeType =
   | Socket
 
 type SElinuxContext = { User: string; Role: string; Type: string }
-type ItemName = FullPath
+type ItemName = string
 
 type ValidatedAuditEntry = {
   Id: int
@@ -81,6 +81,13 @@ let createItems cwd itemIndexes itemNames itemNametypes =
 
   let isValidPath path = Regex.IsMatch(path, "^(/|./).*$") || Regex.IsMatch (path, "^[#\\-\\w.]*$")
 
+  let castToNametype input =
+    match input with
+    | "PARENT" ->
+      Parent
+    | _ ->
+      Other
+
   let createFullPath suffix =
     let result =
       match Regex.IsMatch (suffix, "^.+/$") with
@@ -88,7 +95,7 @@ let createItems cwd itemIndexes itemNames itemNametypes =
         suffix |> StringUtils.skipLast 1 |> PathUtils.getCanonicalPath cwdValue
       | false ->
         PathUtils.getCanonicalPath cwdValue suffix
-    result |> FullPath
+    result
 
   let names =
     match itemNames with
@@ -100,6 +107,7 @@ let createItems cwd itemIndexes itemNames itemNametypes =
         raise (ArgumentException("Invalid item - unrecognized name format - " + String.Join(",",unrecognized)))
     | None ->
       raise (ArgumentException("Invalid item - missing name"))
+
   let nametypes =
     match itemNametypes with
     | Some values ->
@@ -114,6 +122,7 @@ let createItems cwd itemIndexes itemNames itemNametypes =
     |> List.map (fun (_, x, y) -> (x, y))
   | false ->
     raise (ArgumentException("Invalid item - does not have index | name | nametype"))
+
 
 let createModeTypeAndStickyBit input =
   match input with
@@ -143,16 +152,18 @@ let createModeTypeAndStickyBit input =
   | None ->
       raise (ArgumentException("Invalid mode - missing"))
 
+
 let createUid input =
   match input with
   | Some value ->
     match Regex.IsMatch (value, "[a-zA-Z]+") with
     | true ->
-      value |> Uid
+      value
     | false ->
       raise (ArgumentException("Invalid uid - does not contain only alpha chars"))
   | None ->
     raise (ArgumentException("Invalid uid - missing"))
+
 
 let validateAuditLogEntries (entries: AuditLogRaw seq) =
   entries
