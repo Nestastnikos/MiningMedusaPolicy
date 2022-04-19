@@ -15,7 +15,7 @@ type AuditLogRaw = {
   CurrentWorkingDirectory: string option
   // SubjectContext: SElinuxContext
   // ObjectContext: SElinuxContext;
-  // Syscall: string; // TODO: replace placeholder type
+  Syscall: string option;
   // Success: bool;
   // ExitedWithFailure: bool;
   // Command: string;
@@ -68,7 +68,7 @@ let toAuditLog (data: Map<string, string list>) =
   // let getExitedWithFailure () = data |> Map.tryFind "exit" |> ListUtils.fstValueOrNone
   // let getObjectContext () = data |> Map.find "obj" |> ListUtils.fstValueOrNone
   // let getSubjectContext () = data |> Map.find "subj" |> ListUtils.fstValueOrNone
-  // let getSyscall () = data |> Map.find "syscall" |> ListUtils.fstValueOrNone
+  let getSyscall () = data |> Map.tryFind "syscall" |> ListUtils.fstValueOrNone
   // let getIsSuccess () = data |> Map.find "success" |> ListUtils.fstValueOrNone
   // let getCommand () = data |> Map.find "comm" |> ListUtils.fstValueOrNone
   // let getExecutedPath () = data |> Map.find "exe" |> ListUtils.fstValueOrNone
@@ -85,7 +85,7 @@ let toAuditLog (data: Map<string, string list>) =
 
     // ObjectContext = getObjectContext data;
     // SubjectContext = getSubjectContext data;
-    // Syscall = getSyscall data;
+    Syscall = getSyscall ();
     // Success = getIsSuccess data;
     // ExitedWithFailure = getExitedWithFailure data;
     // Command = getCommand data;

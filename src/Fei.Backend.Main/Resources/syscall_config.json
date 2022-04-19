@@ -1,0 +1,82 @@
+[
+  {
+    "name": "openat",
+    "permissions": "rws"
+  },
+  {
+    "name": "chmod",
+    "permissions": "ws"
+  },
+  {
+    "name": "chroot",
+    "permissions": "ws"
+  },
+  {
+    "name": "create",
+    "permissions": "ws"
+  },
+  {
+    "name": "exec",
+    "permissions": "rs"
+  },
+  {
+    "name": "link",
+    "permissions": "ws"
+  },
+  {
+    "name": "lookup",
+    "permissions": "s"
+  },
+  {
+    "name": "mkdir",
+    "permissions": "ws"
+  },
+  {
+    "name": "mknod",
+    "permissions": "ws"
+  },
+  {
+    "name": "notify_change",
+    "permissions": "ws"
+  },
+  {
+    "name": "permission",
+    "permissions": "rws"
+  },
+  {
+    "name": "ptrace",
+    "permissions": "ws"
+  },
+  {
+    "name": "readlink",
+    "permissions": "ws"
+  },
+  {
+    "name": "readwrite",
+    "permissions": "rws"
+  },
+  {
+    "name": "rename",
+    "permissions": "ws"
+  },
+  {
+    "name": "rmdir",
+    "permissions": "ws"
+  },
+  {
+    "name": "sendsig",
+    "permissions": "ws"
+  },
+  {
+    "name": "symlink",
+    "permissions": "ws"
+  },
+  {
+    "name": "truncate",
+    "permissions": "ws"
+  },
+  {
+    "name": "unlink",
+    "permissions": "ws"
+  }
+]

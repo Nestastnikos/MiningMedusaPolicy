@@ -22,6 +22,7 @@ type ValidatedAuditEntry = {
   Mode: ModeType
   IsSticky: bool option
   Uid: Uid
+  Syscall: string
 }
 
 let PATH_PATTERN = "^(/|./).*$"
@@ -164,6 +165,18 @@ let createUid input =
   | None ->
     raise (ArgumentException("Invalid uid - missing"))
 
+let createSyscall input =
+  match input with
+  | Some value ->
+    match Regex.IsMatch (value, "\\w+") with
+    | true ->
+      value
+    | false ->
+      raise (ArgumentException("Invalid syscall - can contain only alphanumeric characters"))
+  | None ->
+    raise (ArgumentException("Invalid syscall - missing"))
+
+
 
 let validateAuditLogEntries (entries: AuditLogRaw seq) =
   entries
@@ -173,9 +186,11 @@ let validateAuditLogEntries (entries: AuditLogRaw seq) =
     let proctitle = x.Proctitle |> createProctitle
     let (mode, isSticky) = x.Mode |> createModeTypeAndStickyBit
     let items = (x.ItemIndexes, x.ItemNames, x.ItemNametypes) |||> createItems x.CurrentWorkingDirectory
+    let syscall = x.Syscall |> createSyscall
     { Id = id;
       Proctitle = proctitle
       Mode = mode;
       IsSticky = isSticky;
       Uid = uid;
-      Items = items; })
+      Items = items;
+      Syscall = syscall; })

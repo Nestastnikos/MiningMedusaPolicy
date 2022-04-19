@@ -1,30 +1,25 @@
 module VirtualSpace
-  open System
-  open Types.CommonTypes
 
-  module Types =
-    [<FlagsAttribute>]
-    type VirtualSpacePermissions = Read = 1 | Write = 2 | See = 4
+open VirtualSpaceTypes
+open System
 
-    type PathEntry = {
-      Path: Path;
-      IsRecursive: bool;
-      IsAddition: bool;
-      IsSticky: bool option; }
+let convertToPermissions (input:string) =
+  input.ToCharArray()
+  |> Array.map (fun x ->
+    match x with
+    | 'r' -> VirtualSpacePermissions.Read
+    | 'w' -> VirtualSpacePermissions.Write
+    | 's' -> VirtualSpacePermissions.See
+    | _ -> raise (ArgumentException("Unknown permission - " + string x)))
+  |> Array.reduce (fun a b -> a+b)
 
-    type VirtualSpaceFilesystem = {
-      Identifier: string;
-      Paths: PathEntry list; }
-
-    type Rule = {
-      Subject: ProcessIdentifier;
-      Object: VirtualSpaceFilesystem;
-      Permissions: VirtualSpacePermissions; }
-
-    type Constraint = { Uid: Uid; Resource: (FullPath * Nametype); Permissions: VirtualSpacePermissions }
-
-
-  module Constants =
-    open Types
-
-    let AllVsPermissions = VirtualSpacePermissions.Read ||| VirtualSpacePermissions.Write ||| VirtualSpacePermissions.See
+let permissionsToString (permissions: VirtualSpacePermissions) =
+  match int permissions with
+  | 1 -> "r"
+  | 2 -> "w"
+  | 3 -> "rw"
+  | 4 -> "s"
+  | 5 -> "rs"
+  | 6 -> "ws"
+  | 7 -> "rws"
+  | _ -> raise (ArgumentException("Unknown permissions - " + string permissions))

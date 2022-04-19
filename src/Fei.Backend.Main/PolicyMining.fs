@@ -1,6 +1,7 @@
 module PolicyMining
 
-open VirtualSpace.Types
+open VirtualSpace
+open VirtualSpaceTypes
 open Validation
 open Utils
 open System
@@ -8,68 +9,71 @@ open Types.CommonTypes
 
 let isRecursive nametype = nametype = Parent
 
-let getNameForVirtualSpace pathEntries =
+let getNameForVirtualSpace pathEntries permissions =
   let pathToVirtualSpaceName (path: string) =
     path.[1..].Replace ('/', '_')
 
-  match pathEntries with
-  | [first] ->
-    match first.Path.FullPath with
-    | "/" ->
-      "all_files"
-    | fullPath ->
-      pathToVirtualSpaceName fullPath
-  | paths when
-      paths |> List.forall (fun x -> x.IsAddition) &&
-      paths |> List.exists (fun x -> x.Path.Depth <> (List.head paths).Path.Depth) ->
-    let parentCandidate = paths |> List.minBy (fun x -> x.Path.Depth)
-    let isParent parent =
-      paths |> List.except [parent]
-      |> List.forall (fun x -> PathUtils.isPathParent parent.Path x.Path)
-    match isParent parentCandidate with
-    | true ->
-      (pathToVirtualSpaceName parentCandidate.Path.FullPath) + "_with_children"
-    | false ->
-      let parentPath = parentCandidate.Path |> PathUtils.getParentPath |> CastUtils.optionToValueOrError
-      (pathToVirtualSpaceName parentPath.FullPath) + "_with_children"
-  | paths when
-      paths |> List.forall (fun x -> x.Path.Depth = (List.head paths).Path.Depth) &&
-      paths
-        |> List.map (fun x -> PathUtils.getParentPath x.Path)
-        |> ListUtils.areAllEqual ->
-    let parent = PathUtils.getParentPath (paths |> List.head).Path |> CastUtils.optionToValueOrError
-    pathToVirtualSpaceName parent.FullPath + "_some"
-  | paths when
-      paths |> List.exists (fun x -> x.Path.Depth <> (List.head paths).Path.Depth) &&
-      paths
-        |> List.sortBy (fun x -> x.Path.Depth)
-        |> List.take 1
-        |> List.forall (fun x -> x.IsRecursive && x.IsAddition) &&
-      paths
-        |> List.sortBy (fun x -> x.Path.Depth)
-        |> List.skip 1
-        |> List.forall (fun x -> not x.IsAddition) ->
-    let parent = List.head paths
-    (pathToVirtualSpaceName parent.Path.FullPath) + "_with_exceptions"
-  | paths when
-      paths
-        |> List.sortBy (fun x -> x.Path.Depth)
-        |> List.take 1
-        |> List.forall (fun x -> x.IsAddition) &&
-      paths
-        |> List.sortBy (fun x -> x.Path.Depth)
-        |> List.skip 1
-        |> List.pairwise
-        |> List.exists (fun (a,b) -> a <> b) ->
-    let parent = paths |> List.sortBy (fun x -> x.Path.Depth) |> List.head
-    (pathToVirtualSpaceName parent.Path.FullPath) + "_with_children_with_exceptions"
-  | _ -> raise (NotImplementedException("Not implemented yet"))
+  let baseName =
+    match pathEntries with
+    | [first] ->
+      match first.Path.FullPath with
+      | "/" ->
+        "all_files"
+      | fullPath ->
+        pathToVirtualSpaceName fullPath
+    | paths when
+        paths |> List.forall (fun x -> x.IsAddition) &&
+        paths |> List.exists (fun x -> x.Path.Depth <> (List.head paths).Path.Depth) ->
+      let parentCandidate = paths |> List.minBy (fun x -> x.Path.Depth)
+      let isParent parent =
+        paths |> List.except [parent]
+        |> List.forall (fun x -> PathUtils.isPathParent parent.Path x.Path)
+      match isParent parentCandidate with
+      | true ->
+        (pathToVirtualSpaceName parentCandidate.Path.FullPath) + "_with_children"
+      | false ->
+        let parentPath = parentCandidate.Path |> PathUtils.getParentPath |> CastUtils.optionToValueOrError
+        (pathToVirtualSpaceName parentPath.FullPath) + "_with_children"
+    | paths when
+        paths |> List.forall (fun x -> x.Path.Depth = (List.head paths).Path.Depth) &&
+        paths
+          |> List.map (fun x -> PathUtils.getParentPath x.Path)
+          |> ListUtils.areAllEqual ->
+      let parent = PathUtils.getParentPath (paths |> List.head).Path |> CastUtils.optionToValueOrError
+      pathToVirtualSpaceName parent.FullPath + "_some"
+    | paths when
+        paths |> List.exists (fun x -> x.Path.Depth <> (List.head paths).Path.Depth) &&
+        paths
+          |> List.sortBy (fun x -> x.Path.Depth)
+          |> List.take 1
+          |> List.forall (fun x -> x.IsRecursive && x.IsAddition) &&
+        paths
+          |> List.sortBy (fun x -> x.Path.Depth)
+          |> List.skip 1
+          |> List.forall (fun x -> not x.IsAddition) ->
+      let parent = List.head paths
+      (pathToVirtualSpaceName parent.Path.FullPath) + "_with_exceptions"
+    | paths when
+        paths
+          |> List.sortBy (fun x -> x.Path.Depth)
+          |> List.take 1
+          |> List.forall (fun x -> x.IsAddition) &&
+        paths
+          |> List.sortBy (fun x -> x.Path.Depth)
+          |> List.skip 1
+          |> List.pairwise
+          |> List.exists (fun (a,b) -> a <> b) ->
+      let parent = paths |> List.sortBy (fun x -> x.Path.Depth) |> List.head
+      (pathToVirtualSpaceName parent.Path.FullPath) + "_with_children_with_exceptions"
+    | _ -> raise (NotImplementedException("Not implemented yet"))
 
-let mergeFsVirtualSpacesIntoSingle virtualSpaces =
+  baseName + "_" + (permissionsToString permissions)
+
+let mergeFsVirtualSpacesIntoSingle permissions virtualSpaces =
   virtualSpaces
   |> List.reduce (fun a b ->
     let newPaths = a.Paths @ b.Paths
-    { Identifier = getNameForVirtualSpace newPaths; Paths = newPaths })
+    { Identifier = getNameForVirtualSpace newPaths permissions; Paths = newPaths })
 
 let mergeRules (rules: Rule list) =
   let rec mergeRulesRec rules depth =
@@ -101,12 +105,12 @@ let mergeRules (rules: Rule list) =
         ruleCandidates
         |> List.groupBy
           (fun x ->
-            groupingParentPaths
+            (groupingParentPaths
             |> List.tryPick
               (fun p -> if x.Object.Paths |> List.map (fun x -> x.Path) |> List.forall (fun cp -> PathUtils.isPathParent p cp)
-                        then Some (p.FullPath) else None))
-        |> List.partition (fun (path,_) -> path.IsSome)
-        ||> ListUtils.mapForBoth (fun (_,x) -> x)
+                        then Some (p.FullPath) else None), x.Permissions))
+        |> List.partition (fun ((path, _),_) -> path.IsSome)
+        ||> ListUtils.mapForBoth (fun (_, x) -> x)
 
       let unmergedRules = unmergeableRules |> List.tryHead |> CastUtils.optionToList
 
@@ -117,14 +121,14 @@ let mergeRules (rules: Rule list) =
             let head = List.head rules
             {
               Subject = head.Subject;
-              Object = rules |> List.map (fun x -> x.Object) |> mergeFsVirtualSpacesIntoSingle;
+              Object = rules |> List.map (fun x -> x.Object) |> mergeFsVirtualSpacesIntoSingle head.Permissions;
               Permissions = head.Permissions })
       mergeRulesRec (unaffectedRules @ mergedRules @ unmergedRules) (currentDepth-1)
 
   let maxDepth = (rules |> List.map (fun x -> x.Object.Paths) |> List.reduce (fun a b -> a @ b) |> List.maxBy (fun x -> x.Path.Depth)).Path.Depth
   mergeRulesRec (rules |> List.distinct) maxDepth
 
-let simplifyVirtualSpace fsVs =
+let simplifyVirtualSpace permissions fsVs =
   let rec simplifyPathsRec paths currentDepth maxDepth =
     match currentDepth = maxDepth with
     | true ->
@@ -144,17 +148,17 @@ let simplifyVirtualSpace fsVs =
   let depths = fsVs.Paths |> List.map (fun x -> x.Path.Depth) |> List.sort
   let (min, max) = (depths |> List.head, depths |> List.last)
   let result = simplifyPathsRec (fsVs.Paths) min max
-  { Identifier = getNameForVirtualSpace result; Paths = result}
+  { Identifier = getNameForVirtualSpace result permissions; Paths = result}
 
 let simplifyRules rules =
   rules
   |> List.map (fun x -> {
     Subject = x.Subject;
-    Object = simplifyVirtualSpace x.Object;
+    Object = simplifyVirtualSpace x.Permissions x.Object;
     Permissions = x.Permissions })
 
 
-let mineBasicRules auditLogEntries =
+let mineBasicRules syscallInfo applicableEntries =
   let rec mineBasicRulesRec uncoveredEntries rules =
     match Seq.isEmpty uncoveredEntries with
     | true -> rules
@@ -165,7 +169,7 @@ let mineBasicRules auditLogEntries =
       let newRules =
         entry.Items
         // use of AllVsPermissions is only temporary
-        |> List.map (fun item -> { Uid=entry.Uid; Resource=item; Permissions=VirtualSpace.Constants.AllVsPermissions})
+        |> List.map (fun item -> { Uid=entry.Uid; Resource=item; Permissions=syscallInfo |> Map.find entry.Syscall })
         |> List.map (fun x ->
           let (fullPath, nametype) = x.Resource
           // FIXME: we shouldnt do this option stuff here, it should be validated earlier
@@ -185,4 +189,4 @@ let mineBasicRules auditLogEntries =
                                               r.Subject = (u.Uid, u.Proctitle)))))
 
       mineBasicRulesRec remainingEntries (rules |> List.append newRules)
-  mineBasicRulesRec auditLogEntries []
+  mineBasicRulesRec applicableEntries []
