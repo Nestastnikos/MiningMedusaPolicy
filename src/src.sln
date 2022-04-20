@@ -7,6 +7,10 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fei.Backend.Main", "Fei.Bac
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fei.Backend.Tests", "Fei.Backend.Tests\Fei.Backend.Tests.fsproj", "{4F9B8941-3FEC-42D3-B8A8-776F2675C1C7}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fei.ConstableConfig.Main", "Fei.ConstableConfig.Main\Fei.ConstableConfig.Main.fsproj", "{ED3F92B4-DD0B-44D7-8DE1-D604C5845EF8}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fei.ConstableConfig.Tests", "Fei.ConstableConfig.Tests\Fei.ConstableConfig.Tests.fsproj", "{5249A566-0695-448F-95CB-8B28EDD1EBA9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{4F9B8941-3FEC-42D3-B8A8-776F2675C1C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F9B8941-3FEC-42D3-B8A8-776F2675C1C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F9B8941-3FEC-42D3-B8A8-776F2675C1C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED3F92B4-DD0B-44D7-8DE1-D604C5845EF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED3F92B4-DD0B-44D7-8DE1-D604C5845EF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED3F92B4-DD0B-44D7-8DE1-D604C5845EF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED3F92B4-DD0B-44D7-8DE1-D604C5845EF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5249A566-0695-448F-95CB-8B28EDD1EBA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5249A566-0695-448F-95CB-8B28EDD1EBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5249A566-0695-448F-95CB-8B28EDD1EBA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5249A566-0695-448F-95CB-8B28EDD1EBA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
