@@ -34,7 +34,7 @@ type RuleDto = {
   SubjectUid: string;
   SubjectProctitle: string;
   Object: VirtualSpaceFsDto
-  Permissions: VirtualSpacePermissions
+  Permissions: string
 }
 
 let mapToRuleDto (rule: Rule) =
@@ -52,7 +52,7 @@ let mapToRuleDto (rule: Rule) =
   { SubjectUid = uid;
     SubjectProctitle = proctitle;
     Object = { Identifier = rule.Object.Identifier; Paths = paths };
-    Permissions = rule.Permissions }
+    Permissions = VirtualSpace.permissionsToString rule.Permissions }
 
 let partitionBySyscall syscallInfo entries =
   let valid, invalid =
