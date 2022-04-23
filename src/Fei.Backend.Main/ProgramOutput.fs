@@ -43,7 +43,7 @@ let mapToRuleDto (rule: Rule) =
     rule.Object.Paths
     |> List.map (fun x ->
         let result: AbstractPathEntry =
-          match x.IsSticky.IsSome with
+          match x.IsDirectory with
           | true ->
             DirectoryDto(x.Path.FullPath, x.IsAddition, x.IsRecursive, x.IsSticky.Value)
           | false ->

@@ -10,7 +10,7 @@ type AuditLogRaw = {
   ItemIndexes: string list option
   ItemNames: string list option
   ItemNametypes: string list option
-  Mode: string option
+  Mode: string list option
   Uid: string option
   CurrentWorkingDirectory: string option
   // SubjectContext: SElinuxContext
@@ -63,7 +63,7 @@ let toAuditLog (data: Map<string, string list>) =
   let getItemNames () = data |> Map.tryFind "name"
   let getItemNametypes () = data |> Map.tryFind "nametype"
 
-  let getMode () = data |> Map.tryFind "mode" |> ListUtils.fstValueOrNone
+  let getMode () = data |> Map.tryFind "mode"
   let getUid () = data |> Map.tryFind "uid" |> ListUtils.fstValueOrNone
   // let getExitedWithFailure () = data |> Map.tryFind "exit" |> ListUtils.fstValueOrNone
   // let getObjectContext () = data |> Map.find "obj" |> ListUtils.fstValueOrNone

@@ -100,3 +100,9 @@ let ``StringUtils - skipLast skips the last character`` () =
     let input = "/test/"
     let result = input |> StringUtils.skipLast 1
     result.ShouldBe "/test"
+
+[<Test>]
+let ``PathUtils - correctly gets path when the path is relative`` () =
+    let input = "."
+    let result = input |> PathUtils.getCanonicalPath "/var/lib/mysql"
+    result.ShouldBe "/var/lib/mysql"

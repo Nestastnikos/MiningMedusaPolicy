@@ -80,6 +80,8 @@ module Utils
 
     let getCanonicalPath cwd targetPath =
       match StringUtils.head targetPath with
+      | '.' when targetPath = "." ->
+        cwd
       | '.' -> //relative path
         match String.length cwd with
           | 1 ->

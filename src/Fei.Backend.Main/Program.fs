@@ -12,7 +12,7 @@ let syscallInfo =
   |> List.fold (fun acc x -> acc |> Map.add x.Name (convertToPermissions x.Permissions)) (Map([]))
 
 let applicableEntries, unapplicableEntries =
-  "./Fei.Backend.Main/Resources/fraction-mysqld_t.log"
+  "./Fei.Backend.Main/Resources/full-mysqld_t.log"
   |> File.ReadAllLines
   |> (Audit.parseToAuditLogEntries >> Validation.validateAuditLogEntries)
   |> Seq.toList

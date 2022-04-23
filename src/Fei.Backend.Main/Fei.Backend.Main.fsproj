@@ -6,10 +6,10 @@
   <ItemGroup>
     <Compile Include="Types.fs" />
     <Compile Include="Utils.fs" />
-    <Compile Include="VirtualSpaceTypes.fs" />
-    <Compile Include="VirtualSpace.fs" />
     <Compile Include="Audit.fs" />
     <Compile Include="Validation.fs" />
+    <Compile Include="VirtualSpaceTypes.fs" />
+    <Compile Include="VirtualSpace.fs" />
     <Compile Include="PolicyMining.fs" />
     <Compile Include="ProgramOutput.fs" />
     <Compile Include="Program.fs" />

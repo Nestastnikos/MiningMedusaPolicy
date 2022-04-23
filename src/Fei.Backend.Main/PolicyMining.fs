@@ -164,17 +164,13 @@ let mineBasicRules syscallInfo applicableEntries =
     | true -> rules
     | false ->
       let entry = Seq.head uncoveredEntries
-      // TODO: change the implementation so it actually finds out based on syscall what
-      // the VsPermissions should be. AllVsPermissions are now just placeholder.
       let newRules =
         entry.Items
-        // use of AllVsPermissions is only temporary
         |> List.map (fun item -> { Uid=entry.Uid; Resource=item; Permissions=syscallInfo |> Map.find entry.Syscall })
         |> List.map (fun x ->
-          let (fullPath, nametype) = x.Resource
-          let path = PathUtils.toPath fullPath
-          let pathEntry = { Path = path; IsRecursive = isRecursive nametype; IsAddition = true; IsSticky = entry.IsSticky }
-          let fsVs = { Identifier = fullPath; Paths = [pathEntry] }
+          let path = PathUtils.toPath x.Resource.Name
+          let pathEntry = { Path = path; IsRecursive = isRecursive x.Resource.Nametype; IsAddition = true; IsSticky = x.Resource.IsSticky; IsDirectory = x.Resource.Mode = Directory }
+          let fsVs = { Identifier = x.Resource.Name; Paths = [pathEntry] }
           let processIdentifier = (entry.Uid, entry.Proctitle)
           { Subject = processIdentifier; Object = fsVs; Permissions = x.Permissions; })
 
@@ -182,8 +178,8 @@ let mineBasicRules syscallInfo applicableEntries =
         uncoveredEntries
         |> Seq.filter (fun u ->
           not (u.Items |> List.forall
-            (fun (path, _) ->
-              rules |> List.exists (fun r -> (List.head r.Object.Paths).Path.FullPath = path &&
+            (fun x ->
+              rules |> List.exists (fun r -> (List.head r.Object.Paths).Path.FullPath = x.Name &&
                                               r.Permissions = (syscallInfo |> Map.find entry.Syscall) &&
                                               r.Subject = (u.Uid, u.Proctitle)))))
 

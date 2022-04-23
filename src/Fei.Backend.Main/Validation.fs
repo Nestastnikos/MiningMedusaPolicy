@@ -15,17 +15,18 @@ type ModeType =
 type SElinuxContext = { User: string; Role: string; Type: string }
 type ItemName = string
 
+type PathItem = {
+  Name: string;
+  Nametype: Nametype;
+  IsSticky: bool option;
+  Mode: ModeType; }
+
 type ValidatedAuditEntry = {
   Id: int
   Proctitle: Proctitle
-  Items: (ItemName * Nametype) list
-  Mode: ModeType
-  IsSticky: bool option
+  Items: PathItem list
   Uid: Uid
-  Syscall: string
-}
-
-let PATH_PATTERN = "^(/|./).*$"
+  Syscall: string }
 
 let toMode input =
   match input with
@@ -57,7 +58,7 @@ let createProctitle proctitle =
   | None ->
       raise (ArgumentException("Invalid proctitle - missing"))
 
-let createItems cwd itemIndexes itemNames itemNametypes =
+let createItems cwd itemNames itemNametypes itemModes =
   let cwdValue =
     match cwd with
     | Some value ->
@@ -68,17 +69,6 @@ let createItems cwd itemIndexes itemNames itemNametypes =
         raise (ArgumentException("Invalid cwd - incorrect path format"))
     | None ->
       raise (ArgumentException("Invalid cwd - missing"))
-
-  let indexes =
-    match itemIndexes with
-    | Some values ->
-      match values |> List.forall (fun x -> Regex.IsMatch (x, "[0-9]+")) with
-      | true ->
-        values |> List.map (fun x -> int x)
-      | false ->
-        raise (ArgumentException("Invalid item - index not a number"))
-    | None ->
-      raise (ArgumentException("Invalid item - missing index"))
 
   let isValidPath path = Regex.IsMatch(path, "^(/|./).*$") || Regex.IsMatch (path, "^[#\\-\\w.]*$")
 
@@ -116,42 +106,49 @@ let createItems cwd itemIndexes itemNames itemNametypes =
     | None ->
       raise (ArgumentException("Invalid item - missing nametype"))
 
-  match (indexes |> List.length) = (names |> List.length) && (names |> List.length) = (nametypes |> List.length) with
-  | true ->
-    List.zip3 indexes names nametypes
-    |> List.sortBy (fun (i, _, _) -> int i)
-    |> List.map (fun (_, x, y) -> (x, y))
-  | false ->
-    raise (ArgumentException("Invalid item - does not have index | name | nametype"))
-
-
-let createModeTypeAndStickyBit input =
-  match input with
-  | Some (value: string) ->
-      match value.Split "," with
-      | [|mode; stickyness; _|] ->
-        let mode = toMode mode
-        let isSticky = stickyness.Equals("sticky", StringComparison.OrdinalIgnoreCase)
-        match mode with
-        | Directory ->
-          (mode, Some(isSticky))
-        | _ ->
-          match isSticky with
-          | false ->
-            (mode, None)
-          | true ->
-            raise (ArgumentException("Invalid mode - nothing can be sticky except directory"))
-      | [|mode; _|] ->
-        let mode = toMode mode
-        match mode with
-        | Directory ->
-          (mode, Some(false))
-        | _ ->
-          (mode, None)
+  let createModeTypeAndStickyBit (input: string) =
+    match input.Split "," with
+    | [|mode; stickyness; _|] ->
+      let mode = toMode mode
+      let isSticky = stickyness.Equals("sticky", StringComparison.OrdinalIgnoreCase)
+      match mode with
+      | Directory ->
+        (mode, Some(isSticky))
       | _ ->
-        raise (ArgumentException("Invalid mode - unknown format"))
-  | None ->
+        match isSticky with
+        | false ->
+          (mode, None)
+        | true ->
+          raise (ArgumentException("Invalid mode - nothing can be sticky except directory"))
+    | [|mode; _|] ->
+      let mode = toMode mode
+      match mode with
+      | Directory ->
+        (mode, Some(false))
+      | _ ->
+        (mode, None)
+    | _ ->
+      raise (ArgumentException("Invalid mode - unknown format"))
+
+
+  let modesWithStickyBits =
+    match itemModes with
+    | Some values ->
+      values |> List.map (fun x -> createModeTypeAndStickyBit x)
+    | None ->
       raise (ArgumentException("Invalid mode - missing"))
+
+  match (names |> List.length) = (nametypes |> List.length) && (names |> List.length) = (modesWithStickyBits |> List.length) with
+  | true ->
+    { 0 .. ((names |> List.length) - 1)  }
+    |> Seq.map (fun x ->
+      let name = names |> List.item x
+      let (mode,isSticky) = modesWithStickyBits |> List.item x
+      let nametype = nametypes |> List.item x
+      { Name = name; Mode = mode; IsSticky = isSticky; Nametype = nametype })
+    |> Seq.toList
+  | false ->
+    raise (ArgumentException("Invalid item - does not have index | name | nametype | mode"))
 
 
 let createUid input =
@@ -184,13 +181,10 @@ let validateAuditLogEntries (entries: AuditLogRaw seq) =
     let id = x.Id |> createId
     let uid = x.Uid |> createUid
     let proctitle = x.Proctitle |> createProctitle
-    let (mode, isSticky) = x.Mode |> createModeTypeAndStickyBit
-    let items = (x.ItemIndexes, x.ItemNames, x.ItemNametypes) |||> createItems x.CurrentWorkingDirectory
+    let items = (x.ItemNames, x.ItemNametypes, x.Mode) |||> createItems x.CurrentWorkingDirectory
     let syscall = x.Syscall |> createSyscall
     { Id = id;
       Proctitle = proctitle
-      Mode = mode;
-      IsSticky = isSticky;
       Uid = uid;
       Items = items;
       Syscall = syscall; })
