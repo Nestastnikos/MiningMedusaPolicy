@@ -2,8 +2,10 @@
 open Newtonsoft.Json
 
 
-let result =
-  JsonConvert.DeserializeObject<InputMappingTypes.InputRuleDto list>("./test.json" |> File.ReadAllText)
+let rules =
+  JsonConvert.DeserializeObject<InputMapping.InputRuleDto list>("./test.json" |> File.ReadAllText)
   |> List.map (fun x -> InputMapping.ruleDtoToRule x)
 
-printfn "%A" result
+let context = GrammarContext.createDefault rules
+let result = GrammarContext.createLanguage context
+printfn "%s" result

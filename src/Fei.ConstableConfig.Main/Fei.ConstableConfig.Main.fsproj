@@ -4,9 +4,9 @@
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="InputMappingTypes.fs" />
     <Compile Include="DomainTypes.fs" />
     <Compile Include="InputMapping.fs" />
+    <Compile Include="GrammarContext.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>

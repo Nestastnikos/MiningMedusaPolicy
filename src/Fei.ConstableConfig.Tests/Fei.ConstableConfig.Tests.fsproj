@@ -1,26 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-
     <IsPackable>false</IsPackable>
     <GenerateProgramFile>false</GenerateProgramFile>
   </PropertyGroup>
-
   <ItemGroup>
-    <Compile Include="BaseTests.fs" />
-    <Compile Include="Program.fs" />
+    <Compile Include="GrammarTests.fs"/>
+    <Compile Include="Program.fs"/>
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
-    <PackageReference Include="NUnit" Version="3.13.2" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
-    <PackageReference Include="coverlet.collector" Version="3.1.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0"/>
+    <PackageReference Include="NUnit" Version="3.13.3"/>
+    <PackageReference Include="NUnit3TestAdapter" Version="4.0.0"/>
+    <PackageReference Include="coverlet.collector" Version="3.1.0"/>
+    <PackageReference Include="Shouldly" Version="4.0.3"/>
   </ItemGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\Fei.ConstableConfig.Main\Fei.ConstableConfig.Main.fsproj" />
+    <ProjectReference Include="..\Fei.ConstableConfig.Main\Fei.ConstableConfig.Main.fsproj"/>
   </ItemGroup>
-
 </Project>
