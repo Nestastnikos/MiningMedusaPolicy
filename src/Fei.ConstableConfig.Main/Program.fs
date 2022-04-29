@@ -8,4 +8,4 @@ let rules =
 
 let context = GrammarContext.createDefault rules
 let result = GrammarContext.createLanguage context
-printfn "%s" result
+("constable.config", result) |> File.WriteAllText
