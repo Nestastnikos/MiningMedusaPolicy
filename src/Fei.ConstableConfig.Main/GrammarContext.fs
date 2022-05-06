@@ -24,7 +24,15 @@ let derivateProcDef context =
   context.Rules
   |> List.map (fun x -> x.Subject)
   |> List.distinct
-  |> List.map (fun (uid, _) -> ["\n"; ";"; uid + "\tENTER " + uid])
+  |> List.map (fun (uid, _) -> ["\n"; ";"; "space " + uid + " = " + context.ProcessTreeName + "/" + uid])
+  |> List.concat
+
+let derivateProcInits context =
+  context.Rules
+  |> List.map (fun x -> x.Subject)
+  |> List.distinct
+  |> List.map (fun (uid, _) ->
+    ["\n"; ";"; uid + "\tENTER " + uid + ", READ " + uid + ", WRITE " + uid + ", SEE " + uid])
   |> List.concat
 
 let derivateVsDef context =
@@ -89,6 +97,36 @@ let derivateRules context =
     ["\n"; ";"; derivatePermissions id x.Permissions; "\t"; uid])
   |> List.concat
 
+let derivateGetProcess context =
+  let requiresBranching =
+    match context.Rules |> List.length with
+    | 0 -> false
+    | _ -> true
+
+  let derivateBranches context nonTerminal =
+    match requiresBranching with
+    | false ->
+      let terminal = "enter(process,@\"<<id>>/init\");".Replace("<<id>>", context.ProcessTreeName)
+      [terminal]
+    | true ->
+      context.Rules
+      |> List.map (fun x -> x.Subject)
+      |> List.distinct
+      |> List.mapi (fun i (uid, proctitle) ->
+        let prefix =
+          match i with
+          | 0 -> "if"
+          | _ -> "elseif"
+
+        let terminal = prefix + " (proctitle.cmdline == \"<<proctitle>>\") {\n\t\tenter(process,@\"<<domainName>>/<<uid>>\");\n\t}"
+        terminal
+          .Replace("<<proctitle>>", proctitle)
+          .Replace("<<domainName>>", context.ProcessTreeName)
+          .Replace("<<uid>>", uid))
+      |> List.append <| [" else {\n\t\tenter(process,@\"<<domainName>>/init\");\n\t}\n\t".Replace("<<domainName>>", context.ProcessTreeName)]
+      |> List.rev
+  ["\n"; "}"; "\n"; "return OK;"] @ derivateBranches context requiresBranching @ ["\n\t"; "{"; "\n"; "* getProcess *"]
+
 let derivate context nonterminal =
   match nonterminal with
   | "<start>" ->
@@ -111,17 +149,24 @@ let derivate context nonterminal =
   | "<vs_section_comment>" ->
     (["\n"; "// virtual space definitions"], [])
   | "<vs_defs>" ->
-    ([], ["<vs_fs_defs>"; "<newl>"; "<vs_proc_defs>"])
+    ([], ["<vs_fs_defs>"; "<newl>"; "<vs_proc_defs>"; "<newl>"; "<vs_proc_inits>"])
   | "<vs_fs_defs>" ->
     (derivateVsDef context, [])
   | "<vs_proc_defs>" ->
     (derivateProcDef context, [])
+  | "<vs_proc_inits>" ->
+    (derivateProcInits context, [])
   | "<rule_section_comment>" ->
     (["\n"; "// rule definitions"], [])
   | "<rules>" ->
     (derivateRules context, [])
   | "<functions>" ->
-    (["\n"; "}"; "{"; "\n"; "function constable_init"; "\n"; "}"; "{"; "\n"; "function init"], [])
+    (["\n"; "}"; "{"; "\n"; "function constable_init"; "\n"; "}"; "{"; "\n"; "function init"], ["<enter_domain>"; "<newl>"; "<get_process>"; "<newl>"])
+  | "<enter_domain>" ->
+    let terminal = "function enter_domain {\n\t enter(process,str2path(\"<<id>>/\"+$1));\n}".Replace("<<id>>", context.ProcessTreeName)
+    ([terminal], [])
+  | "<get_process>" ->
+    (derivateGetProcess context, [])
   | "<newl>" ->
     (["\n"], [])
   | _ -> raise (ArgumentException("Unknown nonterminal - " + nonterminal))
