@@ -366,3 +366,22 @@ let ``mergeRule - rules with different permissions are not merged`` () =
     let result = PolicyMining.mergeRules rules
     result.Length.ShouldBe 2
     result.ShouldBe rules
+
+[<Test>]
+let ``MetricOutput provides correct statistics`` () =
+    let subject = ("mysql", "/lib/mariadb")
+    let fullPath1 = "/var/lib"
+    let fullPath2 = "/var/log/mysql"
+    let path1 = PathUtils.toPath fullPath1
+    let path2 = PathUtils.toPath fullPath2
+
+    let fsVs1 = { Identifier = "var_lib_r"; Paths = [{ Path = path1; IsRecursive = true; IsAddition = true; IsSticky = Some(false); IsDirectory = true; }; ]}
+    let fsVs2 = { Identifier = "var_log_mysql_s"; Paths = [{ Path = path2; IsRecursive = true; IsAddition = true; IsSticky = Some(false); IsDirectory = true; }; ]}
+    let rules = [{Subject = subject; Object = fsVs1; Permissions = VirtualSpacePermissions.Read}; { Subject = subject; Object = fsVs2; Permissions = VirtualSpacePermissions.Write }]
+    let computeMetrics = MetricOutput.setupMetricComputation 0.5 1 0.75
+    let metric = computeMetrics 1 "INITIAL" rules
+
+    metric.NumOfEntries.ShouldBe 1
+    metric.Wsc.ShouldBe (9.5)
+    metric.NumOfRules.ShouldBe 2
+    metric.Phase.ShouldBe "INITIAL"

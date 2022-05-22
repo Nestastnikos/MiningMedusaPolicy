@@ -37,6 +37,9 @@ type RuleDto = {
   Permissions: string
 }
 
+type SyscallInfoInputDto = { Name: string; Permissions: string; }
+type SyscallInfo = Map<string, VirtualSpacePermissions>
+
 let mapToRuleDto (rule: Rule) =
   let uid, proctitle = rule.Subject
   let paths =

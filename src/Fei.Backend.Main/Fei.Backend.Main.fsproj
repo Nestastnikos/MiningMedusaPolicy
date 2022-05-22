@@ -12,6 +12,7 @@
     <Compile Include="VirtualSpace.fs" />
     <Compile Include="PolicyMining.fs" />
     <Compile Include="ProgramOutput.fs" />
+    <Compile Include="MetricOutput.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>

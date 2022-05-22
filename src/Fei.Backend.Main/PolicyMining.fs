@@ -65,7 +65,8 @@ let getNameForVirtualSpace pathEntries permissions =
           |> List.exists (fun (a,b) -> a <> b) ->
       let parent = paths |> List.sortBy (fun x -> x.Path.Depth) |> List.head
       (pathToVirtualSpaceName parent.Path.FullPath) + "_with_children_with_exceptions"
-    | _ -> raise (NotImplementedException("Not implemented yet"))
+    // | _ -> raise (NotImplementedException("Not implemented yet"))
+    | _ -> "UNDEFINED"
 
   baseName + "_" + (permissionsToString permissions)
 

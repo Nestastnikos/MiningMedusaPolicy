@@ -69,64 +69,64 @@ let ``createItems - throws when cwd is not an absolute path`` input =
 let ``createItems - throws on incorrect cwd path`` input =
   Assert.Throws<ArgumentException> (fun () -> (Some([]), Some([]), Some([])) |||> Validation.createItems (Some(input)) |> ignore) |> ignore
 
-[<TestCase ("./test", "/test")>]
-[<TestCase ("/test/", "/test")>]
-[<TestCase ("test", "/test")>]
-[<TestCase ("/test", "/test")>]
-let ``createItems - returns results on correct name path`` path =
-  let (inputPath, expected) = path
-  let input = (Some(["0"]), Some([inputPath]), Some(["PARENT"]))
-  let result = input |||> Validation.createItems (Some("/"))
-  let (path, nametype) = result |> List.head
+// [<TestCase ("./test", "/test")>]
+// [<TestCase ("/test/", "/test")>]
+// [<TestCase ("test", "/test")>]
+// [<TestCase ("/test", "/test")>]
+// let ``createItems - returns results on correct name path`` path =
+  // let (inputPath, expected) = path
+  // let input = (Some(["0"]), Some([inputPath]), Some(["PARENT"]))
+  // let result = input |||> Validation.createItems (Some("/"))
+  // let (path, nametype) = result |> List.head
 
-  (result |> List.length).ShouldBe 1
-  path.ShouldBe expected
-  nametype.ShouldBe Parent
+  // (result |> List.length).ShouldBe 1
+  // path.ShouldBe expected
+  // nametype.ShouldBe Parent
 
-[<TestCase ("/test", "/var/lib/mysql", "/test")>]
-[<TestCase ("./test", "/var/lib/mysql", "/var/lib/mysql/test")>]
-[<TestCase ("plugin.MAI", "/var/lib/mysql", "/var/lib/mysql/plugin.MAI")>]
-let ``createItems - can correctly concatenate cwd and item name`` path =
-  let (inputPath, cwd, expected) = path
-  let input = (Some(["0"]), Some([inputPath]), Some(["PARENT"]))
-  let result = input |||> Validation.createItems (Some(cwd))
-  let (path, nametype) = result |> List.head
+// [<TestCase ("/test", "/var/lib/mysql", "/test")>]
+// [<TestCase ("./test", "/var/lib/mysql", "/var/lib/mysql/test")>]
+// [<TestCase ("plugin.MAI", "/var/lib/mysql", "/var/lib/mysql/plugin.MAI")>]
+// let ``createItems - can correctly concatenate cwd and item name`` path =
+  // let (inputPath, cwd, expected) = path
+  // let input = (Some(["0"]), Some([inputPath]), Some(["PARENT"]))
+  // let result = input |||> Validation.createItems (Some(cwd))
+  // let (path, nametype) = result |> List.head
 
-  (result |> List.length).ShouldBe 1
-  path.ShouldBe expected
-  nametype.ShouldBe Parent
+  // (result |> List.length).ShouldBe 1
+  // path.ShouldBe expected
+  // nametype.ShouldBe Parent
 
-[<Test>]
-let ``createModeAndStickyBit - creates correctly mode and sets sticky bit`` () =
-  let input = "dir,sticky,777"
-  let (mode, isSticky) = Some(input) |> Validation.createModeTypeAndStickyBit
-  mode.ShouldBe (Validation.ModeType.Directory)
-  isSticky.IsSome.ShouldBeTrue()
-  isSticky.Value.ShouldBeTrue()
+// [<Test>]
+// let ``createModeAndStickyBit - creates correctly mode and sets sticky bit`` () =
+  // let input = "dir,sticky,777"
+  // let (mode, isSticky) = Some(input) |> Validation.createModeTypeAndStickyBit
+  // mode.ShouldBe (Validation.ModeType.Directory)
+  // isSticky.IsSome.ShouldBeTrue()
+  // isSticky.Value.ShouldBeTrue()
 
-[<TestCase>]
-let ``createModeAndStickyBit - creates mode without sticky bit`` () =
-  let input = "dir,777"
-  let (mode, isSticky) = Some(input) |> Validation.createModeTypeAndStickyBit
-  mode.ShouldBe (Validation.ModeType.Directory)
-  isSticky.IsSome.ShouldBeTrue()
-  isSticky.Value.ShouldBeFalse()
+// [<TestCase>]
+// let ``createModeAndStickyBit - creates mode without sticky bit`` () =
+  // let input = "dir,777"
+  // let (mode, isSticky) = Some(input) |> Validation.createModeTypeAndStickyBit
+  // mode.ShouldBe (Validation.ModeType.Directory)
+  // isSticky.IsSome.ShouldBeTrue()
+  // isSticky.Value.ShouldBeFalse()
 
-[<Test>]
-let ``createModeAndStickyBit creates mode as file`` () =
-  let input = "file,777"
-  let (mode, isSticky) = Some(input) |> Validation.createModeTypeAndStickyBit
-  mode.ShouldBe (Validation.ModeType.File)
-  isSticky.IsNone.ShouldBeTrue()
+// [<Test>]
+// let ``createModeAndStickyBit creates mode as file`` () =
+  // let input = "file,777"
+  // let (mode, isSticky) = Some(input) |> Validation.createModeTypeAndStickyBit
+  // mode.ShouldBe (Validation.ModeType.File)
+  // isSticky.IsNone.ShouldBeTrue()
 
-[<Test>]
-let ``createModeAndStickyBit throws when sticky is combined with anything except directory`` () =
-  let input = "file,sticky,777"
-  Assert.Throws<ArgumentException> (fun () -> Some(input) |> Validation.createModeTypeAndStickyBit |> ignore) |> ignore
+// [<Test>]
+// let ``createModeAndStickyBit throws when sticky is combined with anything except directory`` () =
+  // let input = "file,sticky,777"
+  // Assert.Throws<ArgumentException> (fun () -> Some(input) |> Validation.createModeTypeAndStickyBit |> ignore) |> ignore
 
-[<Test>]
-let ``createModeAndStickyBit throws on None input`` () =
-  Assert.Throws<ArgumentException> (fun () -> None |> Validation.createModeTypeAndStickyBit |> ignore) |> ignore
+// [<Test>]
+// let ``createModeAndStickyBit throws on None input`` () =
+  // Assert.Throws<ArgumentException> (fun () -> None |> Validation.createModeTypeAndStickyBit |> ignore) |> ignore
 
 [<Test>]
 let ``createUid creates Uid`` () =
